@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://flashlight.png" type="Texture2D" id=1]
+[ext_resource path="res://checker_projector.png" type="Texture2D" id=2]
+[ext_resource path="res://checker.png" type="Texture2D" id=14]
+[ext_resource path="res://tester.gd" type="Script" id=18]
+
+[sub_resource type="ProceduralSkyMaterial" id=1]
+sky_top_color = Color( 0.137255, 0.164706, 0.223529, 1 )
+sky_horizon_color = Color( 0.0980392, 0.211765, 0.356863, 1 )
+ground_bottom_color = Color( 0.121569, 0.121569, 0.129412, 1 )
+ground_horizon_color = Color( 0.138428, 0.202732, 0.328125, 1 )
+
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+sky = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "move"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Testers/SoftOmniShadows:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0, 3 ),
+"transitions": PackedFloat32Array( -2, -2 ),
+"update": 0,
+"values": [ Vector3( 0, 0.1, 12 ), Vector3( 0, 1.1, 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Testers/ProjectorOmniShadows/OmniLight3D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0, 3, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -6.87607e-07, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="StandardMaterial3D" id=5]
+albedo_texture = ExtResource( 14 )
+uv1_scale = Vector3( 32, 32, 1 )
+texture_filter = 5
+
+[sub_resource type="PlaneMesh" id=6]
+material = SubResource( 5 )
+size = Vector2( 64, 64 )
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 1, 0.1, 1 )
+
+[sub_resource type="StandardMaterial3D" id=8]
+albedo_color = Color( 0.992157, 0.705882, 0.705882, 1 )
+albedo_texture = ExtResource( 14 )
+uv1_scale = Vector3( 4.125, 0.125, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 0.25, 1, 0.25 )
+
+[sub_resource type="StandardMaterial3D" id=10]
+albedo_color = Color( 0.992157, 0.878431, 0.658824, 1 )
+albedo_texture = ExtResource( 14 )
+uv1_scale = Vector3( 1, 2, 1 )
+
+[sub_resource type="SphereMesh" id=11]
+radius = 0.25
+height = 0.5
+radial_segments = 48
+rings = 24
+
+[sub_resource type="StandardMaterial3D" id=12]
+albedo_texture = ExtResource( 14 )
+
+[sub_resource type="SphereMesh" id=13]
+radius = 0.25
+height = 0.25
+radial_segments = 48
+rings = 24
+is_hemisphere = true
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 3 )
+script = ExtResource( 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move"
+anims/move = SubResource( 4 )
+script = null
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource( 6 )
+material/0 = null
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform( 0.909487, -0.23874, 0.340349, 0, 0.818672, 0.574262, -0.415733, -0.522284, 0.744571, 3.9506, 3.39961, 3.54442 )
+visible = false
+shadow_enabled = true
+shadow_bias = 0.1
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 30.0
+script = null
+
+[node name="CameraHolder" type="Node3D" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.125, 12 )
+script = null
+
+[node name="RotationX" type="Node3D" parent="CameraHolder"]
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder/RotationX"]
+fov = 74.0
+script = null
+
+[node name="Testers" type="Node3D" parent="."]
+script = null
+
+[node name="SoftOmniShadows" type="MeshInstance3D" parent="Testers"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.1, 12 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+script = null
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Testers/SoftOmniShadows"]
+transform = Transform( 1, 0, 1.2001e-08, 0, 1, 0, 1.2001e-08, 0, 1, 0, 0.6, 0 )
+shadow_enabled = true
+shadow_bias = 0.1
+shadow_blur = 3.0
+omni_attenuation = 2.0
+script = null
+
+[node name="PenumbraSpotShadows" type="Node3D" parent="Testers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+script = null
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Testers/PenumbraSpotShadows"]
+transform = Transform( -4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 1, 0.5, -4.76837e-07 )
+light_energy = 3.0
+light_size = 0.1
+shadow_enabled = true
+shadow_blur = 6.0
+spot_attenuation = 2.0
+spot_angle_attenuation = 0.5
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testers/PenumbraSpotShadows"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.5, 0 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = null
+
+[node name="ProjectorSpotShadows" type="Node3D" parent="Testers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+script = null
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Testers/ProjectorSpotShadows"]
+transform = Transform( -3.09086e-08, -0.866025, 0.5, -3.09086e-08, 0.5, 0.866025, -1, 1.13133e-08, -4.22219e-08, 0, 0.602343, -4.76837e-07 )
+light_color = Color( 1, 0.981333, 0.84, 1 )
+light_energy = 2.0
+light_projector = ExtResource( 1 )
+shadow_enabled = true
+shadow_blur = 3.0
+spot_attenuation = 2.0
+spot_angle_attenuation = 0.5
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testers/ProjectorSpotShadows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.2, 0 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
+script = null
+
+[node name="ProjectorOmniShadows" type="Node3D" parent="Testers"]
+script = null
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Testers/ProjectorOmniShadows"]
+transform = Transform( 1, 0, -1.2001e-08, 0, 1, 0, 1.2001e-08, 0, 1, 0, 0.6, 0 )
+light_color = Color( 0.709804, 1, 0.396078, 1 )
+light_energy = 2.5
+light_projector = ExtResource( 2 )
+shadow_enabled = true
+shadow_bias = 0.1
+shadow_blur = 3.0
+omni_range = 3.0
+omni_attenuation = 2.0
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testers/ProjectorOmniShadows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0172665, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+script = null
