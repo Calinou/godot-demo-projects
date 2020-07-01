@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://level.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="PhysicalSkyMaterial" id=1]
+
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+process_mode = 1
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+sky = SubResource( 2 )
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = true
+sdfgi_cascades = 0
+sdfgi_min_cell_size = 0.3
+sdfgi_cascade0_distance = 19.2
+sdfgi_max_distance = 307.2
+sdfgi_y_scale = 1
+
+[sub_resource type="StandardMaterial3D" id=4]
+
+[sub_resource type="StandardMaterial3D" id=5]
+metallic = 1.0
+roughness = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 3 )
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+gi_mode = 1
+mesh = ExtResource( 1 )
+material/0 = SubResource( 4 )
+material/1 = SubResource( 5 )
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform( 0.652137, 0.417849, -0.63255, 0, 0.834387, 0.551179, 0.758101, -0.359444, 0.544135, -9.38962, 0.40217, 9.28563 )
+shadow_enabled = true
+shadow_bias = 0.03
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 50.0
+script = null
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -5, -7 )
+light_color = Color( 0.184314, 0.733333, 1, 1 )
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 4.0
+omni_attenuation = 2.0
+script = null
