@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 col;
+
+void fragment() {
+	//there is no albedo (all shading is normal)
+	
+	COLOR=col;
+	//sample normal texture
+	vec4 ntex = texture(TEXTURE, UV);
+	//take the alpha from the normal texture
+	COLOR.a=ntex.a;
+	//adjust normalmap from [0..1] to [-1..1]
+	ntex.rgb = ntex.rgb * vec3(-2,-2,1) - vec3(-1,-1,0);
+	//half size of the tile 
+	vec2 tile_vec=vec2(47,22);
+	//rotation to convert the normal to pseudo 3d coordinates
+	//this could be optimized
+	float r = asin(tile_vec.y / tile_vec.x);
+	mat3 rot_mat = mat3( vec3(1,0,0), vec3(0,cos(r),-sin(r)), vec3(0,sin(r),cos(r)));
+
+	//pass the normal
+	NORMAL =  rot_mat * ntex.rgb;
+}
+
+
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/col = null
