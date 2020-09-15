@@ -1,0 +1,223 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://floor_shader.tres" type="Material" id=1]
+[ext_resource path="res://faceColor.png" type="Texture" id=2]
+[ext_resource path="res://wall_shader.tres" type="Material" id=3]
+[ext_resource path="res://faceNormal.png" type="Texture" id=4]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+closed = false
+polygon = PoolVector2Array( -48, 0, 0, 22, 48, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+closed = false
+polygon = PoolVector2Array( 0, -22, 48, 0, 0, 22 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+closed = false
+polygon = PoolVector2Array( 0, -22, -48, 0, 0, 22 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+closed = false
+polygon = PoolVector2Array( -48, 0, 0, -22, 48, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+closed = false
+polygon = PoolVector2Array( -48, 0, 0, 22, 48, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+closed = false
+polygon = PoolVector2Array( 0, 22, 48, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+closed = false
+polygon = PoolVector2Array( -48, 0, 0, 22 )
+
+[sub_resource type="OccluderPolygon2D" id=8]
+closed = false
+polygon = PoolVector2Array( -48, 0, 0, -22 )
+
+[sub_resource type="OccluderPolygon2D" id=9]
+closed = false
+polygon = PoolVector2Array( 0, -22, 48, 0 )
+
+[node name="base" type="Node2D"]
+
+[node name="floor1" type="Sprite" parent="."]
+material = ExtResource( 1 )
+position = Vector2( 140.869, 111.332 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, 28 )
+region_enabled = true
+region_rect = Rect2( 311, 760, 197, 151 )
+
+[node name="floor2" type="Sprite" parent="."]
+material = ExtResource( 1 )
+position = Vector2( 372.62, 109.06 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, 28 )
+region_enabled = true
+region_rect = Rect2( 591, 772, 197, 151 )
+
+[node name="block" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 528, -132 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -60 )
+region_enabled = true
+region_rect = Rect2( 844, 527, 138, 180 )
+
+[node name="collision" type="StaticBody2D" parent="block"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block/collision"]
+polygon = PoolVector2Array( 0, -22, 48, 0, 0, 22, -48, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="block"]
+occluder = SubResource( 1 )
+
+[node name="q_right" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 336, -154 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -60 )
+region_enabled = true
+region_rect = Rect2( 665, 528, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="q_right"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="q_right/collision1"]
+polygon = PoolVector2Array( 0, -22, 48, 0, 0, 22 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="q_right"]
+occluder = SubResource( 2 )
+
+[node name="q_left" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 96, -110 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -60 )
+region_enabled = true
+region_rect = Rect2( 292, 528, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="q_left"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="q_left/collision1"]
+polygon = PoolVector2Array( 0, 22, -48, 0, 0, -22 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="q_left"]
+occluder = SubResource( 3 )
+
+[node name="q_top" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 288, 0 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -60 )
+region_enabled = true
+region_rect = Rect2( 479, 528, 139, 178 )
+
+[node name="collision2" type="StaticBody2D" parent="q_top"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="q_top/collision2"]
+polygon = PoolVector2Array( -48, 0, 0, -22, 48, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="q_top"]
+occluder = SubResource( 4 )
+
+[node name="q_bottom" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 192, -242 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -60 )
+region_enabled = true
+region_rect = Rect2( 103, 528, 139, 178 )
+
+[node name="collision3" type="StaticBody2D" parent="q_bottom"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="q_bottom/collision3"]
+polygon = PoolVector2Array( -48, 0, 48, 0, 0, 22 )
+
+[node name="LightOccluder2D1" type="LightOccluder2D" parent="q_bottom"]
+occluder = SubResource( 5 )
+
+[node name="s_right_bottom" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 288, -330 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -62 )
+region_enabled = true
+region_rect = Rect2( 480, 350, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="s_right_bottom"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="s_right_bottom/collision1"]
+polygon = PoolVector2Array( 0, 22, 48, 0, 48, -22, 0, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="s_right_bottom"]
+occluder = SubResource( 6 )
+
+[node name="s_left_bottom" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 432, -330 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -62 )
+region_enabled = true
+region_rect = Rect2( 665, 350, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="s_left_bottom"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="s_left_bottom/collision1"]
+polygon = PoolVector2Array( 0, 22, -48, 0, -48, -22, 0, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="s_left_bottom"]
+occluder = SubResource( 7 )
+
+[node name="s_left_top" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 528, -330 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( 0, -62 )
+region_enabled = true
+region_rect = Rect2( 292, 350, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="s_left_top"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="s_left_top/collision1"]
+polygon = PoolVector2Array( 0, -22, -48, 0, -48, -22, 0, -44 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="s_left_top"]
+occluder = SubResource( 8 )
+
+[node name="s_right_top" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 576, -330 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+offset = Vector2( -12, -62 )
+region_enabled = true
+region_rect = Rect2( 842, 350, 139, 178 )
+
+[node name="collision1" type="StaticBody2D" parent="s_right_top"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="s_right_top/collision1"]
+polygon = PoolVector2Array( 0, -22, 0, -44, 48, -22, 48, 0 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="s_right_top"]
+occluder = SubResource( 9 )
+
+[node name="instructions" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 13.0
+mouse_filter = 1
+text = "This scene is used to edit the tileset.
+Save to the tileset with Scene -> Convert to -> TileSet
+Then, overwrite \"tileset.tres\""
