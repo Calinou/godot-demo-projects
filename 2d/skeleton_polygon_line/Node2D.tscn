@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://line_10px.png" type="Texture" id=1]
+[ext_resource path="res://character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://line_30px.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.604396, 0.127273 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.527607, 1 )
+colors = PoolColorArray( 0.345098, 0.729412, 0.917647, 1, 1, 1, 1, 1, 0.345098, 0.729412, 0.917647, 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2DInverted" type="Polygon2D" parent="."]
+position = Vector2( 408, -456 )
+color = Color( 0.717647, 0.686275, 0.231373, 1 )
+antialiased = true
+invert_enable = true
+invert_border = 20.0
+polygon = PoolVector2Array( 65.3057, 508.435, 117.632, 527.527, 155.815, 517.627, 155.108, 478.029 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 40, 32 )
+color = Color( 0.33, 0.720833, 1, 0.501961 )
+antialiased = true
+texture_offset = Vector2( 1.139, -21.764 )
+polygon = PoolVector2Array( 381.383, 65.7861, 398.658, 47.2211, 417.75, 34.4932, 442.499, 28.8363, 461.286, 28.3094, 478.561, 30.2505, 503.31, 35.9074, 524.523, 45.0998, 539.775, 58.715, 559.172, 78.3338, 572.301, 101.849, 592.1, 152.76, 587.151, 190.944, 566.645, 234.785, 541.896, 263.069, 521.695, 267.838, 500.177, 267.312, 457.348, 254.403, 429.466, 236.199, 409.972, 211.27, 404.01, 188.116, 426.637, 162.66, 445.327, 153.287, 465.528, 151.346, 443.913, 168.843, 435.428, 187.228, 447.449, 202.785, 470.783, 212.684, 497.653, 216.22, 523.109, 209.856, 535.837, 198.542, 546.444, 172.379, 544.724, 142.861, 531.289, 116.698, 510.076, 101.141, 476.135, 99.0201, 446.742, 103.083, 416.031, 120.233, 392.294, 134.902, 374.311, 137.204, 360.474, 114.396, 359.767, 99.547, 369.667, 83.2836 )
+uv = PoolVector2Array( 381.383, 65.7861, 461.286, 28.3094, 539.775, 58.715, 572.301, 101.849, 592.1, 152.76, 587.151, 190.944, 566.645, 234.785, 541.896, 263.069, 500.177, 267.312, 429.466, 236.199, 404.01, 188.116, 426.637, 162.66, 465.528, 151.346, 507.248, 154.174, 522.097, 168.317, 547.553, 162.66, 544.724, 142.861, 531.289, 116.698, 510.076, 101.141, 476.135, 99.0201, 416.031, 120.233, 374.311, 137.204, 357.341, 97.6059 )
+
+[node name="Line2DVariableWidthColor" type="Line2D" parent="."]
+position = Vector2( 664, 32 )
+points = PoolVector2Array( 69.9547, 69.8821, 75.0088, 79.6931, 145.805, 83.9676, 136.815, 122.924, 89.8739, 136.18, 105.351, 203.832, 144.987, 294.001, 242.568, 264.303, 270.914, 153.639, 308.371, 78.7235, 295.637, 45.7308, 181.436, 41.6508, 179.654, 16.2602, 154.215, 58.8123, 141.134, 52.4483, 135.123, 30.1745, 115.289, 33.079, 98.7455, 47.4191, 106.849, 65.9879, 57.1707, 25.2869, 45.5759, 28.2599, 41.4137, 42.2331, 61.3329, 53.8279, 69.9547, 69.8821 )
+width_curve = SubResource( 1 )
+gradient = SubResource( 2 )
+texture = ExtResource( 1 )
+texture_mode = 2
+joint_mode = 1
+
+[node name="Line2DSharpNone" type="Line2D" parent="."]
+position = Vector2( -64, 0 )
+points = PoolVector2Array( 411.081, 529.648, 500.884, 379.034, 568.766, 526.113 )
+width = 30.0
+default_color = Color( 1, 1, 1, 0.752941 )
+texture = ExtResource( 3 )
+texture_mode = 1
+round_precision = 12
+
+[node name="Line2DBevelBox" type="Line2D" parent="."]
+position = Vector2( 177, 0 )
+points = PoolVector2Array( 411.081, 529.648, 500.884, 379.034, 568.766, 526.113 )
+width = 30.0
+default_color = Color( 1, 1, 1, 0.752941 )
+texture = ExtResource( 3 )
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+round_precision = 12
+
+[node name="Line2DRoundRound" type="Line2D" parent="."]
+position = Vector2( 393, 0 )
+points = PoolVector2Array( 411.081, 529.648, 500.884, 379.034, 568.766, 526.113 )
+width = 30.0
+default_color = Color( 1, 1, 1, 0.752941 )
+texture = ExtResource( 3 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 12
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 512, 300 )
+current = true
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
+position = Vector2( 64, 64 )
+scale = Vector2( 0.5, 0.5 )
