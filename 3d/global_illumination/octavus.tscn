@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8pdfuqofik1h"]
+
+[ext_resource type="Script" path="res://octavus.gd" id="1_i5d5u"]
+[ext_resource type="PackedScene" uid="uid://cnf5ovghtmchq" path="res://octavus.glb" id="1_nk8fq"]
+[ext_resource type="VoxelGIData" uid="uid://0ry8fbk0ouwd" path="res://octavus.VoxelGI_data.res" id="2_ujeuk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_thkej"]
+sky_top_color = Color(0.568627, 0.698039, 0.807843, 1)
+sky_horizon_color = Color(0.672549, 0.704902, 0.734314, 1)
+ground_bottom_color = Color(0.121569, 0.121569, 0.129412, 1)
+ground_horizon_color = Color(0.672549, 0.704902, 0.734314, 1)
+
+[sub_resource type="Sky" id="Sky_hxbeh"]
+sky_material = SubResource( "ProceduralSkyMaterial_thkej" )
+
+[sub_resource type="Environment" id="Environment_8htu5"]
+background_mode = 2
+sky = SubResource( "Sky_hxbeh" )
+tonemap_mode = 3
+tonemap_white = 6.0
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = true
+sdfgi_bounce_feedback = 1.0
+sdfgi_y_scale = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2hkg"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fcdo8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8eww"]
+metallic = 1.0
+roughness = 0.0
+
+[node name="Octavus" type="Node3D"]
+script = ExtResource( "1_i5d5u" )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_8htu5" )
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.846206, -0.527901, -0.0725024, 0.492155, -0.826457, 0.273409, -0.204253, 0.195678, 0.959162, 0, 0, 0)
+shadow_enabled = true
+shadow_bias = 0.25
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.918658, 0.0546712, -0.391252, 0, 0.990378, 0.138389, 0.395054, 0.127132, -0.909819, -6.6403, 1.84574, -29.169)
+script = null
+
+[node name="Octavus" parent="." instance=ExtResource( "1_nk8fq" )]
+
+[node name="octavus2" parent="Octavus" index="0"]
+material_override = SubResource( "StandardMaterial3D_t2hkg" )
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+subdiv = 2
+extents = Vector3(64, 17, 64)
+data = ExtResource( "2_ujeuk" )
+script = null
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+visible = false
+script = null
+
+[node name="SphereOutdoor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.954286, 0.142411, -0.262787, 0, 0.879197, 0.476458, 0.298895, 0.454678, -0.839006, -3.79936, 0.0168734, -20.0213)
+gi_mode = 1
+mesh = SubResource( "SphereMesh_fcdo8" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_q8eww" )
+script = null
+
+[node name="SphereOutdoor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.954286, 0.142411, -0.262787, 0, 0.879197, 0.476458, 0.298895, 0.454678, -0.839006, 1.33194, 0.0168734, -23.5064)
+gi_mode = 1
+mesh = SubResource( "SphereMesh_fcdo8" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_q8eww" )
+script = null
+
+[node name="SphereIndoor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.954286, 0.142411, -0.262787, 0, 0.879197, 0.476458, 0.298895, 0.454678, -0.839006, -15.1065, 2.40742, -36.5273)
+gi_mode = 1
+mesh = SubResource( "SphereMesh_fcdo8" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_q8eww" )
+script = null
+
+[node name="OmniLight3DPurple" type="OmniLight3D" parent="."]
+transform = Transform3D(0.386678, -0.922202, 0.00475821, 0, 0.00515955, 0.999987, -0.922215, -0.386673, 0.00199509, -12.7628, 3.62747, -38.438)
+light_color = Color(0.592157, 0.435294, 1, 1)
+light_energy = 3.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_blur = 4.0
+script = null
+
+[node name="OmniLight3DGreen" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.996575, -0.00942613, -0.0821514, 0, 0.993482, -0.113993, 0.0826904, -0.113603, -0.990079, 12.8206, 3.66769, 38.3529)
+light_color = Color(0.447059, 1, 0.196078, 1)
+light_energy = 3.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_blur = 4.0
+script = null
+
+[node name="InfoLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 39.0
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -39.0
+offset_right = 56.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "F1: Previous GI mode
+F2: Next GI mode
+
+F3: Decrease GI quality
+F4: Increase GI quality"
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPSLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 39.0
+grow_horizontal = 0
+align = 2
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Octavus"]
