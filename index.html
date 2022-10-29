@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,8 +78,19 @@
 		li a:hover {
 			background-color: hsla(0, 0%, 50%, 0.1);
 		}
+
+		li a * {
+			float: left;
+		}
+
+		li a p {
+			height: 24px;
+			margin: 20px 10px;
+		}
+
 	</style>
 </head>
+
 <body>
 	<h1>Godot demo projects</h1>
 	<p>
@@ -104,79 +116,85 @@
 	<h2>List of demos</h2>
 	<ul>
 		<!-- The list of demos will be inserted below by the CI process. -->
-<li><a href='2d/dodge_the_creeps/'><img width=64 height=64 src=2d/dodge_the_creeps//favicon.png alt=> Dodge the Creeps</a></li>
-<li><a href='2d/finite_state_machine/'><img width=64 height=64 src=2d/finite_state_machine//favicon.png alt=> Hierarchical Finite State Machine</a></li>
-<li><a href='2d/gd_paint/'><img width=64 height=64 src=2d/gd_paint//favicon.png alt=> GD Paint</a></li>
-<li><a href='2d/hexagonal_map/'><img width=64 height=64 src=2d/hexagonal_map//favicon.png alt=> Hexagonal Game</a></li>
-<li><a href='2d/instancing/'><img width=64 height=64 src=2d/instancing//favicon.png alt=> Scene Instancing Demo</a></li>
-<li><a href='2d/isometric/'><img width=64 height=64 src=2d/isometric//favicon.png alt=> Isometric Game</a></li>
-<li><a href='2d/kinematic_character/'><img width=64 height=64 src=2d/kinematic_character//favicon.png alt=> Kinematic Character 2D</a></li>
-<li><a href='2d/light2d_as_mask/'><img width=64 height=64 src=2d/light2d_as_mask//favicon.png alt=> 2D Lights as Mask</a></li>
-<li><a href='2d/lights_and_shadows/'><img width=64 height=64 src=2d/lights_and_shadows//favicon.png alt=> 2D Lights and Shadows</a></li>
-<li><a href='2d/navigation/'><img width=64 height=64 src=2d/navigation//favicon.png alt=> Navigation Polygon 2D</a></li>
-<li><a href='2d/navigation_astar/'><img width=64 height=64 src=2d/navigation_astar//favicon.png alt=> Grid-based Pathfinding with Astar</a></li>
-<li><a href='2d/particles/'><img width=64 height=64 src=2d/particles//favicon.png alt=> 2D Particles</a></li>
-<li><a href='2d/physics_platformer/'><img width=64 height=64 src=2d/physics_platformer//favicon.png alt=> Physics-Based Platformer 2D</a></li>
-<li><a href='2d/physics_tests/'><img width=64 height=64 src=2d/physics_tests//favicon.png alt=> 2D Physics Tests</a></li>
-<li><a href='2d/platformer/'><img width=64 height=64 src=2d/platformer//favicon.png alt=> Platformer 2D</a></li>
-<li><a href='2d/pong/'><img width=64 height=64 src=2d/pong//favicon.png alt=> Pong with GDScript</a></li>
-<li><a href='2d/role_playing_game/'><img width=64 height=64 src=2d/role_playing_game//favicon.png alt=> JRPG Demo</a></li>
-<li><a href='2d/screen_space_shaders/'><img width=64 height=64 src=2d/screen_space_shaders//favicon.png alt=> Screen Space Shaders</a></li>
-<li><a href='2d/sprite_shaders/'><img width=64 height=64 src=2d/sprite_shaders//favicon.png alt=> 2D Shaders for Sprites</a></li>
-<li><a href='2d/tween/'><img width=64 height=64 src=2d/tween//favicon.png alt=> Tween Demo</a></li>
-<li><a href='3d/ik/'><img width=64 height=64 src=3d/ik//favicon.png alt=> 3D Inverse Kinematics</a></li>
-<li><a href='3d/kinematic_character/'><img width=64 height=64 src=3d/kinematic_character//favicon.png alt=> Kinematic Character 3D</a></li>
-<li><a href='3d/material_testers/'><img width=64 height=64 src=3d/material_testers//favicon.png alt=> Material Testers</a></li>
-<li><a href='3d/navmesh/'><img width=64 height=64 src=3d/navmesh//favicon.png alt=> 3D Navigation Mesh</a></li>
-<li><a href='3d/physics_tests/'><img width=64 height=64 src=3d/physics_tests//favicon.png alt=> 3D Physics Tests</a></li>
-<li><a href='3d/platformer/'><img width=64 height=64 src=3d/platformer//favicon.png alt=> Platformer 3D</a></li>
-<li><a href='3d/truck_town/'><img width=64 height=64 src=3d/truck_town//favicon.png alt=> Truck Town</a></li>
-<li><a href='3d/waypoints/'><img width=64 height=64 src=3d/waypoints//favicon.png alt=> 3D Waypoints</a></li>
-<li><a href='audio/bpm_sync/'><img width=64 height=64 src=audio/bpm_sync//favicon.png alt=> BPM Sync Demo</a></li>
-<li><a href='audio/generator/'><img width=64 height=64 src=audio/generator//favicon.png alt=> Audio Generator Demo</a></li>
-<li><a href='audio/mic_record/'><img width=64 height=64 src=audio/mic_record//favicon.png alt=> Audio Mic Record Demo</a></li>
-<li><a href='audio/spectrum/'><img width=64 height=64 src=audio/spectrum//favicon.png alt=> Audio Spectrum Demo</a></li>
-<li><a href='gui/control_gallery/'><img width=64 height=64 src=gui/control_gallery//favicon.png alt=> Control Gallery</a></li>
-<li><a href='gui/drag_and_drop/'><img width=64 height=64 src=gui/drag_and_drop//favicon.png alt=> Drag & Drop (GUI)</a></li>
-<li><a href='gui/input_mapping/'><img width=64 height=64 src=gui/input_mapping//favicon.png alt=> Input Mapping GUI</a></li>
-<li><a href='gui/regex/'><img width=64 height=64 src=gui/regex//favicon.png alt=> RegEx (Regular Expressions)</a></li>
-<li><a href='gui/rich_text_bbcode/'><img width=64 height=64 src=gui/rich_text_bbcode//favicon.png alt=> Rich Text Label with BBCode</a></li>
-<li><a href='gui/sdf_font/'><img width=64 height=64 src=gui/sdf_font//favicon.png alt=> Signed Distance Field Font Demo</a></li>
-<li><a href='gui/theming_override/'><img width=64 height=64 src=gui/theming_override//favicon.png alt=> GUI Theming Override Demo</a></li>
-<li><a href='gui/translation/'><img width=64 height=64 src=gui/translation//favicon.png alt=> Translation Demo</a></li>
-<li><a href='loading/autoload/'><img width=64 height=64 src=loading/autoload//favicon.png alt=> Autoload (Singletons)</a></li>
-<li><a href='loading/scene_changer/'><img width=64 height=64 src=loading/scene_changer//favicon.png alt=> Scene Changer</a></li>
-<li><a href='loading/serialization/'><img width=64 height=64 src=loading/serialization//favicon.png alt=> Saving and Loading (Serialization)</a></li>
-<li><a href='misc/2.5d/'><img width=64 height=64 src=misc/2.5d//favicon.png alt=> 2.5D Demo with GDScript</a></li>
-<li><a href='misc/joypads/'><img width=64 height=64 src=misc/joypads//favicon.png alt=> Joypads</a></li>
-<li><a href='misc/opensimplexnoise/'><img width=64 height=64 src=misc/opensimplexnoise//favicon.png alt=> OpenSimplexNoise Viewer</a></li>
-<li><a href='misc/os_test/'><img width=64 height=64 src=misc/os_test//favicon.png alt=> Operating System Testing</a></li>
-<li><a href='misc/pause/'><img width=64 height=64 src=misc/pause//favicon.png alt=> Pause</a></li>
-<li><a href='misc/window_management/'><img width=64 height=64 src=misc/window_management//favicon.png alt=> Window Management</a></li>
-<li><a href='mobile/multitouch_cubes/'><img width=64 height=64 src=mobile/multitouch_cubes//favicon.png alt=> Interactive Cubes</a></li>
-<li><a href='mobile/multitouch_view/'><img width=64 height=64 src=mobile/multitouch_view//favicon.png alt=> Multitouch View</a></li>
-<li><a href='viewport/2d_in_3d/'><img width=64 height=64 src=viewport/2d_in_3d//favicon.png alt=> 2D in 3D</a></li>
-<li><a href='viewport/3d_in_2d/'><img width=64 height=64 src=viewport/3d_in_2d//favicon.png alt=> 3D in 2D</a></li>
-<li><a href='viewport/3d_scaling/'><img width=64 height=64 src=viewport/3d_scaling//favicon.png alt=> 3D Viewport Scaling</a></li>
-<li><a href='viewport/dynamic_split_screen/'><img width=64 height=64 src=viewport/dynamic_split_screen//favicon.png alt=> Dynamic Split Screen</a></li>
-<li><a href='viewport/gui_in_3d/'><img width=64 height=64 src=viewport/gui_in_3d//favicon.png alt=> GUI in 3D</a></li>
-<li><a href='viewport/screen_capture/'><img width=64 height=64 src=viewport/screen_capture//favicon.png alt=> Screen Capture</a></li>
-<li><a href='visual_script/circle_pop/'><img width=64 height=64 src=visual_script/circle_pop//favicon.png alt=> CirclePop</a></li>
-<li><a href='visual_script/multitouch_view/'><img width=64 height=64 src=visual_script/multitouch_view//favicon.png alt=> Multitouch View</a></li>
-<li><a href='visual_script/pong/'><img width=64 height=64 src=visual_script/pong//favicon.png alt=> Pong with VisualScript</a></li>
+<li><a href='2d/bullet_shower/'><img width=64 height=64 src=2d/bullet_shower//favicon.png alt=><p>Bullet Shower</p></a></li>
+<li><a href='2d/dodge_the_creeps/'><img width=64 height=64 src=2d/dodge_the_creeps//favicon.png alt=><p>Dodge the Creeps</p></a></li>
+<li><a href='2d/finite_state_machine/'><img width=64 height=64 src=2d/finite_state_machine//favicon.png alt=><p>Hierarchical Finite State Machine</p></a></li>
+<li><a href='2d/gd_paint/'><img width=64 height=64 src=2d/gd_paint//favicon.png alt=><p>GD Paint</p></a></li>
+<li><a href='2d/hexagonal_map/'><img width=64 height=64 src=2d/hexagonal_map//favicon.png alt=><p>Hexagonal Game</p></a></li>
+<li><a href='2d/instancing/'><img width=64 height=64 src=2d/instancing//favicon.png alt=><p>Scene Instancing Demo</p></a></li>
+<li><a href='2d/isometric/'><img width=64 height=64 src=2d/isometric//favicon.png alt=><p>Isometric Game</p></a></li>
+<li><a href='2d/kinematic_character/'><img width=64 height=64 src=2d/kinematic_character//favicon.png alt=><p>Kinematic Character 2D</p></a></li>
+<li><a href='2d/light2d_as_mask/'><img width=64 height=64 src=2d/light2d_as_mask//favicon.png alt=><p>2D Lights as Mask</p></a></li>
+<li><a href='2d/lights_and_shadows/'><img width=64 height=64 src=2d/lights_and_shadows//favicon.png alt=><p>2D Lights and Shadows</p></a></li>
+<li><a href='2d/navigation/'><img width=64 height=64 src=2d/navigation//favicon.png alt=><p>Navigation Polygon 2D</p></a></li>
+<li><a href='2d/navigation_astar/'><img width=64 height=64 src=2d/navigation_astar//favicon.png alt=><p>Grid-based Pathfinding with Astar</p></a></li>
+<li><a href='2d/particles/'><img width=64 height=64 src=2d/particles//favicon.png alt=><p>2D Particles</p></a></li>
+<li><a href='2d/physics_platformer/'><img width=64 height=64 src=2d/physics_platformer//favicon.png alt=><p>Physics-Based Platformer 2D</p></a></li>
+<li><a href='2d/physics_tests/'><img width=64 height=64 src=2d/physics_tests//favicon.png alt=><p>2D Physics Tests</p></a></li>
+<li><a href='2d/platformer/'><img width=64 height=64 src=2d/platformer//favicon.png alt=><p>Platformer 2D</p></a></li>
+<li><a href='2d/pong/'><img width=64 height=64 src=2d/pong//favicon.png alt=><p>Pong with GDScript</p></a></li>
+<li><a href='2d/role_playing_game/'><img width=64 height=64 src=2d/role_playing_game//favicon.png alt=><p>JRPG Demo</p></a></li>
+<li><a href='2d/screen_space_shaders/'><img width=64 height=64 src=2d/screen_space_shaders//favicon.png alt=><p>Screen Space Shaders</p></a></li>
+<li><a href='2d/skeleton/'><img width=64 height=64 src=2d/skeleton//favicon.png alt=><p>Skeleton2D Demo</p></a></li>
+<li><a href='2d/sprite_shaders/'><img width=64 height=64 src=2d/sprite_shaders//favicon.png alt=><p>2D Shaders for Sprites</p></a></li>
+<li><a href='2d/tween/'><img width=64 height=64 src=2d/tween//favicon.png alt=><p>Tween Demo</p></a></li>
+<li><a href='3d/ik/'><img width=64 height=64 src=3d/ik//favicon.png alt=><p>3D Inverse Kinematics</p></a></li>
+<li><a href='3d/kinematic_character/'><img width=64 height=64 src=3d/kinematic_character//favicon.png alt=><p>Kinematic Character 3D</p></a></li>
+<li><a href='3d/material_testers/'><img width=64 height=64 src=3d/material_testers//favicon.png alt=><p>Material Testers</p></a></li>
+<li><a href='3d/navmesh/'><img width=64 height=64 src=3d/navmesh//favicon.png alt=><p>3D Navigation Mesh</p></a></li>
+<li><a href='3d/physics_tests/'><img width=64 height=64 src=3d/physics_tests//favicon.png alt=><p>3D Physics Tests</p></a></li>
+<li><a href='3d/platformer/'><img width=64 height=64 src=3d/platformer//favicon.png alt=><p>Platformer 3D</p></a></li>
+<li><a href='3d/rigidbody_character/'><img width=64 height=64 src=3d/rigidbody_character//favicon.png alt=><p>RigidBody Character 3D</p></a></li>
+<li><a href='3d/truck_town/'><img width=64 height=64 src=3d/truck_town//favicon.png alt=><p>Truck Town</p></a></li>
+<li><a href='3d/waypoints/'><img width=64 height=64 src=3d/waypoints//favicon.png alt=><p>3D Waypoints</p></a></li>
+<li><a href='audio/bpm_sync/'><img width=64 height=64 src=audio/bpm_sync//favicon.png alt=><p>BPM Sync Demo</p></a></li>
+<li><a href='audio/generator/'><img width=64 height=64 src=audio/generator//favicon.png alt=><p>Audio Generator Demo</p></a></li>
+<li><a href='audio/mic_record/'><img width=64 height=64 src=audio/mic_record//favicon.png alt=><p>Audio Mic Record Demo</p></a></li>
+<li><a href='audio/midi_piano/'><img width=64 height=64 src=audio/midi_piano//favicon.png alt=><p>MIDI Piano Demo</p></a></li>
+<li><a href='audio/spectrum/'><img width=64 height=64 src=audio/spectrum//favicon.png alt=><p>Audio Spectrum Demo</p></a></li>
+<li><a href='gui/control_gallery/'><img width=64 height=64 src=gui/control_gallery//favicon.png alt=><p>Control Gallery</p></a></li>
+<li><a href='gui/drag_and_drop/'><img width=64 height=64 src=gui/drag_and_drop//favicon.png alt=><p>Drag & Drop (GUI)</p></a></li>
+<li><a href='gui/input_mapping/'><img width=64 height=64 src=gui/input_mapping//favicon.png alt=><p>Input Mapping GUI</p></a></li>
+<li><a href='gui/multiple_resolutions/'><img width=64 height=64 src=gui/multiple_resolutions//favicon.png alt=><p>Multiple Resolutions and Aspect Ratios</p></a></li>
+<li><a href='gui/regex/'><img width=64 height=64 src=gui/regex//favicon.png alt=><p>RegEx (Regular Expressions)</p></a></li>
+<li><a href='gui/rich_text_bbcode/'><img width=64 height=64 src=gui/rich_text_bbcode//favicon.png alt=><p>Rich Text Label with BBCode</p></a></li>
+<li><a href='gui/sdf_font/'><img width=64 height=64 src=gui/sdf_font//favicon.png alt=><p>Signed Distance Field Font Demo</p></a></li>
+<li><a href='gui/theming_override/'><img width=64 height=64 src=gui/theming_override//favicon.png alt=><p>GUI Theming Override Demo</p></a></li>
+<li><a href='gui/translation/'><img width=64 height=64 src=gui/translation//favicon.png alt=><p>Translation Demo</p></a></li>
+<li><a href='loading/autoload/'><img width=64 height=64 src=loading/autoload//favicon.png alt=><p>Autoload (Singletons)</p></a></li>
+<li><a href='loading/scene_changer/'><img width=64 height=64 src=loading/scene_changer//favicon.png alt=><p>Scene Changer</p></a></li>
+<li><a href='loading/serialization/'><img width=64 height=64 src=loading/serialization//favicon.png alt=><p>Saving and Loading (Serialization)</p></a></li>
+<li><a href='misc/2.5d/'><img width=64 height=64 src=misc/2.5d//favicon.png alt=><p>2.5D Demo with GDScript</p></a></li>
+<li><a href='misc/joypads/'><img width=64 height=64 src=misc/joypads//favicon.png alt=><p>Joypads</p></a></li>
+<li><a href='misc/opensimplexnoise/'><img width=64 height=64 src=misc/opensimplexnoise//favicon.png alt=><p>OpenSimplexNoise Viewer</p></a></li>
+<li><a href='misc/os_test/'><img width=64 height=64 src=misc/os_test//favicon.png alt=><p>Operating System Testing</p></a></li>
+<li><a href='misc/pause/'><img width=64 height=64 src=misc/pause//favicon.png alt=><p>Pause</p></a></li>
+<li><a href='misc/window_management/'><img width=64 height=64 src=misc/window_management//favicon.png alt=><p>Window Management</p></a></li>
+<li><a href='mobile/multitouch_cubes/'><img width=64 height=64 src=mobile/multitouch_cubes//favicon.png alt=><p>Multitouch Cubes Demo </p></a></li>
+<li><a href='mobile/multitouch_view/'><img width=64 height=64 src=mobile/multitouch_view//favicon.png alt=><p>Multitouch View</p></a></li>
+<li><a href='viewport/2d_in_3d/'><img width=64 height=64 src=viewport/2d_in_3d//favicon.png alt=><p>2D in 3D</p></a></li>
+<li><a href='viewport/3d_in_2d/'><img width=64 height=64 src=viewport/3d_in_2d//favicon.png alt=><p>3D in 2D</p></a></li>
+<li><a href='viewport/3d_scaling/'><img width=64 height=64 src=viewport/3d_scaling//favicon.png alt=><p>3D Viewport Scaling</p></a></li>
+<li><a href='viewport/dynamic_split_screen/'><img width=64 height=64 src=viewport/dynamic_split_screen//favicon.png alt=><p>Dynamic Split Screen</p></a></li>
+<li><a href='viewport/gui_in_3d/'><img width=64 height=64 src=viewport/gui_in_3d//favicon.png alt=><p>GUI in 3D</p></a></li>
+<li><a href='viewport/screen_capture/'><img width=64 height=64 src=viewport/screen_capture//favicon.png alt=><p>Screen Capture</p></a></li>
+<li><a href='visual_script/circle_pop/'><img width=64 height=64 src=visual_script/circle_pop//favicon.png alt=><p>CirclePop</p></a></li>
+<li><a href='visual_script/multitouch_view/'><img width=64 height=64 src=visual_script/multitouch_view//favicon.png alt=><p>Multitouch View with VisualScript</p></a></li>
+<li><a href='visual_script/pong/'><img width=64 height=64 src=visual_script/pong//favicon.png alt=><p>Pong with VisualScript</p></a></li>
         <!-- The list of demos will be inserted above by the CI process. -->
     </ul>
     <h2>Unavailable demos</h2>
     <ul>
-        <li><code>2d/hdr/</code>: Not supported on HTML5 yet.
-        <li><code>3d/voxel/</code>: Not supported on HTML5 yet.
-        <li><code>audio/device_changer/</code>: Not supported on HTML5 due to browser limitations.
-        <li><code>loading/background_load/</code>: Not supported on HTML5 yet.
-        <li><code>loading/multiple_threads_loading/</code>: Not supported on HTML5 yet.
-        <li><code>loading/threads/</code>: Not supported on HTML5 yet.
-        <li><code>misc/matrix_transform/</code>: Results are only visible in the editor.
-        <li><code>mobile/android_iap/</code>: Only relevant on native Android.
-        <li><code>mobile/sensors/</code>: Not supported on HTML5 yet.
+        <li><code>2d/hdr/</code>: Not supported on HTML5 yet.</li>
+        <li><code>3d/global_illumination/</code>: Not supported on HTML5 yet (freezes the browser).</li>
+        <li><code>3d/voxel/</code>: Not supported on HTML5 yet.</li>
+        <li><code>audio/device_changer/</code>: Not supported on HTML5 due to browser limitations.</li>
+        <li><code>loading/background_load/</code>: Not supported on HTML5 yet.</li>
+        <li><code>loading/multiple_threads_loading/</code>: Not supported on HTML5 yet.</li>
+        <li><code>loading/threads/</code>: Not supported on HTML5 yet.</li>
+        <li><code>misc/matrix_transform/</code>: Results are only visible in the editor.</li>
+        <li><code>mobile/android_iap/</code>: Only relevant on native Android.</li>
+        <li><code>mobile/sensors/</code>: Not supported on HTML5 yet.</li>
         <li><code>mono/*/</code>: Not available yet (requires Mono-enabled HTML5 build).</li>
         <li><code>networking/*/</code>: Doesn't make sense to be hosted on a static host, as the server must be hosted on the same origin due to the browser's same-origin policy.</li>
         <li><code>plugins/*/</code>: Only effective within the editor.</li>
