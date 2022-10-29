@@ -5,14 +5,14 @@ on:
       - master
 
 env:
-  GODOT_VERSION: 3.3.3
+  GODOT_VERSION: 3.5.1
 
 jobs:
   export-html5:
     name: Export projects to HTML5 and deploy to GitHub Pages
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:3.3.3
+      image: barichello/godot-ci:3.5.1
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -89,7 +89,7 @@ jobs:
         run: |
           apt-get update -qq && apt-get install -qqq rsync
       - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # The branch the action should deploy to.
