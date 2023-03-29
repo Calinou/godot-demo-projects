@@ -1,22 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbnebk7xoaoto"]
+[gd_scene load_steps=7 format=3 uid="uid://bbnebk7xoaoto"]
+
+[ext_resource type="Texture2D" uid="uid://ccttqxkvi2ip2" path="res://square.webp" id="1_vtju2"]
 
 [sub_resource type="BoxMesh" id="1"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rtwg"]
+albedo_texture = ExtResource("1_vtju2")
+uv1_scale = Vector3(24, 16, 1)
+texture_filter = 5
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fikmw"]
+sky_top_color = Color(0.189, 0.2241, 0.27, 1)
+sky_horizon_color = Color(0.3168, 0.3212, 0.33, 1)
+ground_bottom_color = Color(0.1, 0.0846, 0.067, 1)
+ground_horizon_color = Color(0.3168, 0.3212, 0.33, 1)
+
+[sub_resource type="Sky" id="Sky_cj6x7"]
+sky_material = SubResource("ProceduralSkyMaterial_fikmw")
+
+[sub_resource type="Environment" id="Environment_5vs50"]
+background_mode = 2
+sky = SubResource("Sky_cj6x7")
 
 [node name="Cubes" type="Node3D"]
 
 [node name="MeshInstance1" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rtwg")
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
 mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rtwg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.877582, 0.229849, -0.420736, 0, 0.877582, 0.479426, 0.479426, -0.420736, 0.770151, -1.68294, 2.25571, 3.0806)
-fov = 74.0
+fov = 58.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 2, 1)
+transform = Transform3D(0.949113, 0, 0.314937, 0, 1, 0, -0.314937, 0, 0.949113, 0.3, 2, 1)
 shadow_enabled = true
-shadow_bias = 0.08
+shadow_bias = 0.03
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5vs50")
