@@ -1,4 +1,4 @@
-# 3D Viewport Scaling for Compatibility Renderer
+# 3D Viewport Scaling (Compatibility)
 
 This demo shows how to scale the 3D viewport rendering without affecting 2D
 elements such as the HUD. It also demonstrates how to toggle filtering on a
@@ -6,7 +6,8 @@ viewport. This technique can be useful in 2D games as well. For instance, it can
 be used to have a "pixel art" viewport for the main game area and a
 non-pixel-art viewport for HUD elements.
 
-If you're using the `Forward+` renderer, see ../3d_scaling instead.
+If you're using the `Forward+` renderer, see the [3D Viewport Scaling](../3d_scaling)
+demo instead.
 
 Language: GDScript
 
@@ -16,6 +17,6 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 
 ## Screenshots
 
-![Screenshot](screenshots/high.png)
+![Screenshot](screenshots/3d_scaling_compat_high.webp)
 
-![Screenshot](screenshots/low.png)
+![Screenshot](screenshots/3d_scaling_compat_low.webp)
