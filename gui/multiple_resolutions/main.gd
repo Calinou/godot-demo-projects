@@ -13,6 +13,7 @@ var base_window_size = Vector2(
 # in your own project.
 var stretch_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
 var stretch_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+var scale_mode = Window.CONTENT_SCALE_STRETCH_FRACTIONAL
 
 var scale_factor = 1.0
 var gui_aspect_ratio = -1.0
@@ -125,7 +126,13 @@ func _on_window_stretch_aspect_item_selected(index):
 	get_viewport().content_scale_aspect = stretch_aspect
 
 
+func _on_window_scale_mode_item_selected(index):
+	scale_mode = index
+	get_viewport().content_scale_stretch = scale_mode
+
+
 func _on_window_scale_factor_drag_ended(_value_changed):
 	scale_factor = $"Panel/AspectRatioContainer/Panel/CenterContainer/Options/WindowScaleFactor/HSlider".value
 	$"Panel/AspectRatioContainer/Panel/CenterContainer/Options/WindowScaleFactor/Value".text = "%d%%" % (scale_factor * 100)
 	get_viewport().content_scale_factor = scale_factor
+
