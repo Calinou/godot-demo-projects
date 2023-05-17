@@ -2,9 +2,9 @@ extends TileMap
 
 enum Tile { OBSTACLE, START_POINT, END_POINT }
 
-const CELL_SIZE = Vector2(64, 64)
+const CELL_SIZE = Vector2i(64, 64)
 const BASE_LINE_WIDTH = 3.0
-const DRAW_COLOR = Color.WHITE
+const DRAW_COLOR = Color.WHITE * Color(1, 1, 1, 0.5)
 
 # The object for pathfinding on 2D grids.
 var _astar = AStarGrid2D.new()
@@ -16,7 +16,10 @@ var _path = PackedVector2Array()
 
 func _ready():
 	# Let's assume that the entire map is located at non-negative coordinates.
-	var map_size = get_used_rect().end
+	# In this demo, the TileMap's tiles don't extend up to the screen's edges
+	# (it has a margin of 1 tile), so allow navigating one additional tile
+	# on the bottom and right corners.
+	var map_size = get_used_rect().end + Vector2i(1, 1)
 	_map_rect = Rect2i(Vector2i(), map_size)
 
 	_astar.size = map_size
@@ -74,8 +77,8 @@ func find_path(local_start_point, local_end_point):
 	_path = _astar.get_point_path(_start_point, _end_point)
 
 	if not _path.is_empty():
-		set_cell(0, _start_point, Tile.START_POINT, Vector2i())
-		set_cell(0, _end_point, Tile.END_POINT, Vector2i())
+		set_cell(0, _start_point, 0, Vector2i(Tile.START_POINT, 0))
+		set_cell(0, _end_point, 0, Vector2i(Tile.END_POINT, 0))
 
 	# Redraw the lines and circles from the start to the end point.
 	queue_redraw()

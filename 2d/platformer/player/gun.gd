@@ -3,7 +3,7 @@ class_name Gun extends Marker2D
 ## The Cooldown timer controls the cooldown duration between shots.
 
 
-const BULLET_VELOCITY = 500.0
+const BULLET_VELOCITY = 850.0
 const Bullet = preload("res://player/bullet.tscn")
 
 @onready var sound_shoot := $Shoot as AudioStreamPlayer2D
