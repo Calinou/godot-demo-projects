@@ -1,7 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy11txudwdmgy"]
+[gd_scene load_steps=11 format=3 uid="uid://dy11txudwdmgy"]
 
-[ext_resource type="Texture2D" uid="uid://bc22e06hdx8c" path="res://icon.webp" id="1_8tycj"]
+[ext_resource type="Texture2D" uid="uid://brwp8bimc75uu" path="res://icon.webp" id="1_8tycj"]
+[ext_resource type="AudioStream" uid="uid://dcr1ucpuhl57k" path="res://sounds/interface/change.ogg" id="1_nqswv"]
+[ext_resource type="AudioStream" uid="uid://cyk4t8wxo3j6r" path="res://sounds/interface/ui_hover.ogg" id="2_5m32e"]
 [ext_resource type="Script" path="res://tree.gd" id="2_68sc3"]
+[ext_resource type="AudioStream" uid="uid://r7c1amskqp37" path="res://sounds/interface/press.ogg" id="3_bg31s"]
+[ext_resource type="AudioStream" uid="uid://dv8s3kgyoems7" path="res://sounds/interface/ui_action_short.ogg" id="4_ea6q6"]
+[ext_resource type="AudioStream" uid="uid://bfktmqobtevyf" path="res://sounds/interface/ui_error.ogg" id="4_x1t6s"]
+
+[sub_resource type="Theme" id="Theme_qulqu"]
+BaseButton/audios/hover = ExtResource("2_5m32e")
+BaseButton/audios/pressed = ExtResource("3_bg31s")
+BaseButton/audios/pressed_disabled = ExtResource("4_x1t6s")
+Control/audios/focus = ExtResource("1_nqswv")
+ItemList/audios/item_disabled_selected = ExtResource("4_x1t6s")
+ItemList/audios/item_selected = ExtResource("3_bg31s")
+LineEdit/audios/text_change_rejected = ExtResource("4_x1t6s")
+LineEdit/audios/text_changed = ExtResource("4_ea6q6")
+LineEdit/audios/text_submitted = ExtResource("3_bg31s")
+PopupMenu/audios/item_activated = ExtResource("3_bg31s")
+PopupMenu/audios/item_disabled_activated = ExtResource("4_x1t6s")
+Slider/audios/drag_ended = ExtResource("3_bg31s")
+Slider/audios/drag_started = ExtResource("1_nqswv")
+Slider/audios/value_changed = ExtResource("4_ea6q6")
+SpinBox/audios/pressed = ExtResource("3_bg31s")
+TabBar/audios/hover = ExtResource("2_5m32e")
+TabBar/audios/pressed = ExtResource("3_bg31s")
+TabBar/audios/pressed_disabled = ExtResource("4_x1t6s")
+TextEdit/audios/text_changed = ExtResource("4_ea6q6")
+Tree/audios/item_selected = ExtResource("3_bg31s")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bl4wp"]
 content_margin_left = 10.0
@@ -23,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_qulqu")
 
 [node name="MainPanel" type="ColorRect" parent="."]
 layout_mode = 1
@@ -64,6 +92,11 @@ horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MainPanel/HSplitContainer/BasicControls/VBoxContainer"]
 layout_mode = 2
+text = "Button"
+
+[node name="Button2" type="Button" parent="MainPanel/HSplitContainer/BasicControls/VBoxContainer"]
+layout_mode = 2
+disabled = true
 text = "Button"
 
 [node name="LinkButton" type="LinkButton" parent="MainPanel/HSplitContainer/BasicControls/VBoxContainer"]
@@ -302,10 +335,20 @@ theme_override_font_sizes/font_size = 24
 text = "Numbers"
 horizontal_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(255, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+prefix = "SpinBox"
+
+[node name="SpinBox2" type="SpinBox" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(255, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+editable = false
 prefix = "SpinBox"
 
 [node name="HSliderContainer" type="HBoxContainer" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer"]
@@ -317,6 +360,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 value = 50.0
+
+[node name="HSlider2" type="HSlider" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer/HSliderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+value = 50.0
+editable = false
 
 [node name="Label" type="Label" parent="MainPanel/HSplitContainer/VSplitContainer/Numbers/VBoxContainer/HSliderContainer"]
 layout_mode = 2
@@ -492,3 +542,12 @@ layout_mode = 2
 size_flags_vertical = 3
 select_mode = 2
 script = ExtResource("2_68sc3")
+
+[node name="Button" type="CheckButton" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Pause"
+
+[connection signal="toggled" from="Button" to="MainPanel/HSplitContainer/VSplitContainer/Lists/VBoxContainer/HBoxContainer/VBoxContainer2/Tree" method="_on_button_toggled"]

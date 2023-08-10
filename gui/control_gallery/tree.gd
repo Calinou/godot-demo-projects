@@ -11,3 +11,7 @@ func _ready() -> void:
 	child2.set_text(0, "Tree - Child 2")
 	var subchild1: TreeItem = create_item(child1)
 	subchild1.set_text(0, "Tree - Subchild 1")
+
+
+func _on_button_toggled(toggled_on: bool) -> void:
+	get_tree().paused = toggled_on
