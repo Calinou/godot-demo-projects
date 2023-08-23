@@ -1,8 +1,5 @@
 extends Node2D
 
-func _process(delta):
-	pass
-
 func _on_tile_map_game_over():
 	$Player.set_physics_process(false)
 	$Game_over.play()

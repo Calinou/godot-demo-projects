@@ -10,6 +10,7 @@ radius = 97.0206
 script = ExtResource("1_7fpdl")
 
 [node name="Star" type="Sprite2D" parent="."]
+modulate = Color(0.45098, 0.768627, 1, 1)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_limip")
 offset = Vector2(3, 2)
