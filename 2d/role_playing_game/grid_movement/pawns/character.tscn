@@ -10,7 +10,7 @@ length = 0.001
 
 [sub_resource type="Animation" id="1"]
 resource_name = "bump"
-length = 0.1
+length = 0.25
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/path = NodePath("Pivot/Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-0.6, -1), Vector2(1, 0.6), Vector2(-1.2, 1), Vector2(0.5, -0.5), Vector2(0, 0)]
@@ -31,7 +31,7 @@ tracks/1/path = NodePath("Pivot/Slime:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-3, -4), Vector2(2, 1.5), Vector2(-2.6, 2), Vector2(1.8, -1.9), Vector2(0, 0)]
@@ -39,19 +39,32 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Pivot/Slime:texture")
+tracks/2/path = NodePath("Pivot/Slime:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Slime:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4"), ExtResource("4")]
+"values": [ExtResource("4"), ExtResource("4"), ExtResource("3")]
 }
 
 [sub_resource type="Animation" id="4"]
 resource_name = "idle"
 length = 1.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,6 +88,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 0.5, 2, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.125, 0.844), Vector2(0.906, 1.141), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Pivot/Slime:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3"), ExtResource("3")]
 }
 
 [sub_resource type="Animation" id="2"]
@@ -143,7 +168,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("Pivot/Slime:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -166,28 +191,24 @@ _data = {
 animation = &"bump"
 
 [sub_resource type="AnimationNodeAnimation" id="7"]
-animation = &"Idle"
+animation = &"idle"
 
 [sub_resource type="AnimationNodeAnimation" id="10"]
 animation = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="11"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="12"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="13"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="14"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ed7tp"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3wgi"]
-advance_mode = 2
+advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="5"]
 states/End/position = Vector2(245, -15)
@@ -216,7 +237,8 @@ libraries = {
 [node name="Pivot" type="Marker2D" parent="."]
 
 [node name="Slime" type="Sprite2D" parent="Pivot"]
-scale = Vector2(1e-05, 1e-05)
+position = Vector2(0, -4.37912)
+scale = Vector2(0.908741, 1.13728)
 texture = ExtResource("3")
 centered = false
 offset = Vector2(-32, -32)

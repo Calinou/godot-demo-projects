@@ -63,14 +63,6 @@ libraries = {
 }
 next/take_damage = &"idle"
 
-[node name="Tween" type="Tween" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-editor_description = ""
-script = null
-
 [node name="Pivot" type="Marker2D" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="Pivot"]

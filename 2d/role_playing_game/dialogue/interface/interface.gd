@@ -13,7 +13,7 @@ func show_dialogue(player, dialogue):
 	$Button.grab_focus()
 	dialogue_node = dialogue
 	for c in dialogue.get_signal_connection_list("dialogue_finished"):
-		if self == c.target:
+		if self == c.callable.get_object():
 			dialogue_node.start_dialogue()
 			break
 			return
