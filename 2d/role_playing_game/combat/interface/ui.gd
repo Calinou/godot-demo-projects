@@ -9,10 +9,10 @@ func initialize():
 	for combatant in combatants_node.get_children():
 		var health = combatant.get_node("Health")
 		var info = info_scene.instantiate()
-		var health_info = info.get_node("VBoxContainer/Health")
+		var health_info = info.get_node("VBoxContainer/HealthContainer/Health")
 		health_info.value = health.life
 		health_info.max_value = health.max_life
-		info.get_node("VBoxContainer/Name").text = combatant.name
+		info.get_node("VBoxContainer/NameContainer/Name").text = combatant.name
 		health.connect("health_changed", Callable(health_info, "set_value"))
 		$Combatants.add_child(info)
 	$Buttons/GridContainer/Attack.grab_focus()
