@@ -25,6 +25,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={

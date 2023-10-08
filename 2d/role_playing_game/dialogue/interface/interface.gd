@@ -12,10 +12,11 @@ func show_dialogue(player, dialogue):
 	show()
 	$Button.grab_focus()
 	dialogue_node = dialogue
-	for c in dialogue.get_signal_connection_list("dialogue_finished"):
-		if self == c.callable.get_object():
+	for c in dialogue.get_signal_connection_list("dialogue_started"):
+		if player == c.callable.get_object():
 			dialogue_node.start_dialogue()
-			break
+			$Name.text = "[center]" + dialogue_node.dialogue_name + "[/center]"
+			$Text.text = dialogue_node.dialogue_text
 			return
 	dialogue_node.connect("dialogue_started", Callable(player, "set_active").bind(false))
 	dialogue_node.connect("dialogue_finished", Callable(player, "set_active").bind(true))
