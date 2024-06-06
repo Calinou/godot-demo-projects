@@ -20,6 +20,13 @@ func _ready() -> void:
 	rotation_x.transform.basis = Basis.from_euler(Vector3(rot_x, 0, 0))
 	update_gui()
 
+	# Adjust visuals to better correspond to Forward+/Mobile when using
+	# the Compatibility rendering method.
+	if Engine.get_current_rendering_method() == "gl_compatibility":
+		$DirectionalLight3D.light_energy *= 0.25
+		$DirectionalLight3D.shadow_bias += 1.0
+		RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_left"):

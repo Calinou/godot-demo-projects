@@ -1,5 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://d0ygmqpylq0wy"]
+[gd_scene load_steps=39 format=3 uid="uid://d0ygmqpylq0wy"]
 
+[ext_resource type="Script" path="res://town/town_scene.gd" id="1_3pwii"]
 [ext_resource type="PackedScene" uid="uid://dfdgytsvtqxwv" path="res://town/truck_town.glb" id="1_x0dmm"]
 [ext_resource type="Script" path="res://spedometer.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://b2g4dq0w72e68" path="res://town/materials/grass.webp" id="4_cymw0"]
@@ -134,6 +135,7 @@ data = PackedVector3Array(-2, 0.5, 2, 2, -0.5, 2, -2, -0.5, 2, -2, 0.5, -2, -2, 
 data = PackedVector3Array(-2, 1, 2, 2, -1, 2, -2, -1, 2, -2, 1, -2, -2, -1, -2, 2, -1, -2, -2, 1, 2, -2, 1, -2, 2, -1, 2, -2, 1, -2, 2, -1, -2, 2, -1, 2, -2, 1, -2, -2, 1, 2, -2, -1, -2, -2, 1, 2, -2, -1, 2, -2, -1, -2, -2, -1, 2, 2, -1, 2, -2, -1, -2, 2, -1, 2, 2, -1, -2, -2, -1, -2)
 
 [node name="TownScene" type="Node3D"]
+script = ExtResource("1_3pwii")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dauhq")

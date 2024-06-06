@@ -16,6 +16,7 @@ var base_height := int(ProjectSettings.get_setting("display/window/size/viewport
 @onready var camera: Camera3D = $CameraHolder/RotationX/Camera3D
 @onready var fps_label: Label = $FPSLabel
 
+
 func _ready() -> void:
 	# Disable V-Sync to uncap framerate on supported platforms. This makes performance comparison
 	# easier on high-end machines that easily reach the monitor's refresh rate.
@@ -24,6 +25,17 @@ func _ready() -> void:
 	rotation_x.transform.basis = Basis.from_euler(Vector3(rot_x, 0, 0))
 	update_gui()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
+
+	# Adjust visuals to better correspond to Forward+/Mobile when using
+	# the Compatibility rendering method, and mark certain features as unsupported.
+	if Engine.get_current_rendering_method() == "gl_compatibility":
+		$DirectionalLight3D.light_energy *= 0.25
+		$DirectionalLight3D.shadow_bias += 4.5
+		RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
+
+		for node: Control in [$Antialiasing/FXAAContainer/FXAA, $Antialiasing/TAAContainer/TAA, $Antialiasing/FidelityFXFSR]:
+			node.disabled = true
+			node.tooltip_text = "Not supported in the Compatibility rendering method."
 
 
 func _unhandled_input(event: InputEvent) -> void:

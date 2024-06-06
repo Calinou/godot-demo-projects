@@ -69,6 +69,13 @@ func _ready() -> void:
 	set_reflection_probe_mode(reflection_probe_mode)
 	set_ssil_mode(ssil_mode)
 
+	# Adjust visuals to better correspond to Forward+/Mobile when using
+	# the Compatibility rendering method, and mark certain features as unsupported.
+	if Engine.get_current_rendering_method() == "gl_compatibility":
+		$Sun.light_energy *= 0.25
+		$Sun.shadow_bias += 1.0
+		RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cycle_gi_mode"):

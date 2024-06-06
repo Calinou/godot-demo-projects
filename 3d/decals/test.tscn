@@ -728,7 +728,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Next  »"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Info" type="Label" parent="."]
 offset_left = 24.0
 offset_top = 63.0
 offset_right = 273.0
