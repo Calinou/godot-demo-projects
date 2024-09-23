@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c364yor2q0j1a"]
+[gd_scene load_steps=4 format=3 uid="uid://bulw0pypka0bv"]
 
 [ext_resource type="Script" path="res://options.gd" id="1_20y27"]
 [ext_resource type="PackedScene" uid="uid://bfbqknlrqre0c" path="res://3d_primitives.tscn" id="2_leeh8"]
+[ext_resource type="PackedScene" uid="uid://drmdg7kgtgadn" path="res://gradients.tscn" id="3_py7p5"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,7 +12,7 @@ offset_top = 16.0
 offset_right = 576.0
 offset_bottom = 82.0
 script = ExtResource("1_20y27")
-scenes = Array[PackedScene]([ExtResource("2_leeh8")])
+scenes = Array[PackedScene]([ExtResource("2_leeh8"), ExtResource("3_py7p5")])
 
 [node name="TonemapMode" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -23,10 +24,12 @@ text = "Scene"
 
 [node name="SceneOptionButton" type="OptionButton" parent="Options/TonemapMode"]
 layout_mode = 2
-item_count = 1
+item_count = 2
 selected = 0
 popup/item_0/text = "3D Primitives"
 popup/item_0/id = 0
+popup/item_1/text = "Gradients"
+popup/item_1/id = 1
 
 [node name="Label" type="Label" parent="Options/TonemapMode"]
 layout_mode = 2
