@@ -1,6 +1,34 @@
 extends VBoxContainer
 
-@export var world_environment: WorldEnvironment
+@export var scenes: Array[PackedScene]
+
+var current_scene: TestScene = null
+var world_environment: WorldEnvironment = null
+
+func _ready():
+	_on_scene_option_button_item_selected(0)
+
+func _on_scene_option_button_item_selected(index):
+	if current_scene != null:
+		current_scene.queue_free()
+		current_scene = null
+
+	var old_environment: Environment = null
+	if world_environment != null:
+		old_environment = world_environment.environment
+
+	var new_scene: PackedScene = scenes[index]
+	current_scene = new_scene.instantiate() as TestScene
+	if current_scene:
+		add_child(current_scene)
+
+		world_environment = current_scene.world_environment
+		if old_environment != null:
+			world_environment.environment.tonemap_mode = old_environment.tonemap_mode
+			world_environment.environment.tonemap_exposure = old_environment.tonemap_exposure
+			world_environment.environment.tonemap_white = old_environment.tonemap_white
+			world_environment.environment.adjustment_color_correction = old_environment.adjustment_color_correction
+			world_environment.environment.adjustment_saturation = old_environment.adjustment_saturation
 
 
 func _on_tonemap_mode_item_selected(index: int) -> void:
