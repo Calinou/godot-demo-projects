@@ -4,6 +4,7 @@ extends Node
 @export var max_value_label: Label3D
 @export var colors: Array[Color]
 @export var custom_bar: GradientBars
+@export var hues: MeshInstance3D
 
 func _ready():
 	for i in range(colors.size()):
@@ -22,10 +23,14 @@ func _on_steps_value_changed(value):
 		var bar = get_node(bar_path)
 		var shader_mat = bar.hdr_bar.material_override as ShaderMaterial
 		shader_mat.set_shader_parameter("steps", value)
+	if hues:
+		var shader_mat = hues.material_override as ShaderMaterial
+		shader_mat.set_shader_parameter("steps", value)
 
 
 func _on_color_picker_button_color_changed(color):
-	custom_bar.set_color(color)
+	if custom_bar:
+		custom_bar.set_color(color)
 
 
 func _on_exponential_toggled(button_pressed):
@@ -35,4 +40,7 @@ func _on_exponential_toggled(button_pressed):
 		shader_mat.set_shader_parameter("exponential_view", button_pressed)
 
 		shader_mat = bar.sdr_bar.material_override as ShaderMaterial
+		shader_mat.set_shader_parameter("exponential_view", button_pressed)
+	if hues:
+		var shader_mat = hues.material_override as ShaderMaterial
 		shader_mat.set_shader_parameter("exponential_view", button_pressed)
