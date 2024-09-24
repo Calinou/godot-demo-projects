@@ -8,6 +8,7 @@ render_priority = 0
 shader = ExtResource("2_njjq2")
 shader_parameter/my_color = Color(1, 1, 1, 1)
 shader_parameter/steps = 10
+shader_parameter/exponential_view = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_p6ckv"]
 
@@ -16,6 +17,7 @@ render_priority = 0
 shader = ExtResource("2_njjq2")
 shader_parameter/my_color = Color(1, 1, 1, 1)
 shader_parameter/steps = 1
+shader_parameter/exponential_view = true
 
 [node name="Gradients" type="Node3D" node_paths=PackedStringArray("sdr_bar", "hdr_bar", "label")]
 script = ExtResource("1_idd8e")
