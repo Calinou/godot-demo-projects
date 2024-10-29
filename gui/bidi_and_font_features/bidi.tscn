@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://doa7j7q1j4p4e"]
+[gd_scene load_steps=22 format=3 uid="uid://doa7j7q1j4p4e"]
 
 [ext_resource type="Script" path="res://bidi.gd" id="2"]
 [ext_resource type="FontFile" uid="uid://dcyy0x2u3jocr" path="res://fonts/NotoSansThaiUI_Regular.ttf" id="2_plk2w"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://cwer1pi5ka4io" path="res://fonts/NotoSansHebrew_Regular.ttf" id="4_03wxc"]
 [ext_resource type="FontFile" uid="uid://bic5b75wmaxwj" path="res://fonts/LinLibertine_R.otf" id="5_dd4o7"]
 [ext_resource type="FontFile" uid="uid://cctsp10uhaei8" path="res://fonts/Recursive_VF_subset-GF_latin_basic.woff2" id="8_8y1fh"]
+[ext_resource type="FontFile" uid="uid://c3cxndonfjo0g" path="res://fonts/NotoColorEmoji-Regular-subset.ttf" id="9_j1pyu"]
 
 [sub_resource type="FontVariation" id="FontVariation_pn5rb"]
 base_font = ExtResource("5_dd4o7")
@@ -84,9 +85,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 14
+current_tab = 5
 
 [node name="Line breaking and justification" type="Panel" parent="TabContainer"]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="LabelBrkInfo" type="Label" parent="TabContainer/Line breaking and justification"]
 layout_mode = 0
@@ -165,6 +169,7 @@ text = "آنچ اندر وهم ناید آن شوم"
 [node name="Text direction" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="LabelDirInfo" type="Label" parent="TabContainer/Text direction"]
 layout_mode = 0
@@ -349,6 +354,7 @@ script = ExtResource("3")
 [node name="Font features" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="LabelDisplay1" type="Label" parent="TabContainer/Font features"]
 layout_mode = 0
@@ -491,6 +497,7 @@ Que fin 1/3 0
 [node name="Variable fonts" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="LabelVarInfo" type="Label" parent="TabContainer/Variable fonts"]
 layout_mode = 0
@@ -621,8 +628,9 @@ uri = "https://www.recursive.design/"
 [node name="System fonts" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 4
 
-[node name="LabelVarInfo" type="Label" parent="TabContainer/System fonts"]
+[node name="LabelSysInfo" type="Label" parent="TabContainer/System fonts"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 30.0
@@ -798,6 +806,55 @@ theme_override_fonts/font = SubResource("SystemFont_oua6b")
 theme_override_font_sizes/font_size = 32
 text = "Example text – 1234567890"
 text_overrun_behavior = 3
+
+[node name="Emoji" type="Panel" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="LabelEmojiInfo" type="Label" parent="TabContainer/Emoji"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 830.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.419608, 0.831373, 0.505882, 1)
+theme_override_font_sizes/font_size = 14
+text = "Loading and displaying emoji fonts."
+
+[node name="EmojiPreviewCustom" type="Label" parent="TabContainer/Emoji"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 118.0
+offset_right = 830.0
+offset_bottom = 141.0
+theme_override_fonts/font = ExtResource("9_j1pyu")
+theme_override_font_sizes/font_size = 24
+text = "🥳🧁🍰🎁🎂🎈🎺🎉🎊📧〽️🧿🌶️🔋😂❤️😍🤣😊🥺🙏💕😭😘👍😅👏"
+
+[node name="EmojiPreviewCustom2" type="Label" parent="TabContainer/Emoji"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 78.0
+offset_right = 830.0
+offset_bottom = 101.0
+text = "Custom font included in the project (NotoColorEmoji subset)"
+
+[node name="EmojiPreviewSystem" type="Label" parent="TabContainer/Emoji"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 238.0
+offset_right = 830.0
+offset_bottom = 261.0
+theme_override_font_sizes/font_size = 24
+text = "🥳🧁🍰🎁🎂🎈🎺🎉🎊📧〽️🧿🌶️🔋😂❤️😍🤣😊🥺🙏💕😭😘👍😅👏"
+
+[node name="EmojiPreviewSystem2" type="Label" parent="TabContainer/Emoji"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 198.0
+offset_right = 830.0
+offset_bottom = 221.0
+text = "System emoji font (may not display correctly)"
 
 [connection signal="item_selected" from="TabContainer/Text direction/Tree" to="." method="_on_Tree_item_selected"]
 [connection signal="text_changed" from="TabContainer/Text direction/LineEditCustomSTSource" to="." method="_on_LineEditCustomSTSource_text_changed"]
