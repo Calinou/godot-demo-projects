@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://spvyippyvj41"]
+
+[ext_resource type="Script" uid="uid://22ctxveirnn3" path="res://custom_drawing.gd" id="1_jxaal"]
+[ext_resource type="Script" uid="uid://cgu4yn8u5x1r6" path="res://drawing_area.gd" id="2_0devy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxaal")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Methods" type="ItemList" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="General" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/General"]
+layout_mode = 2
+text = "MSAA 2D"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/MarginContainer/VBoxContainer/General"]
+layout_mode = 2
+selected = 3
+item_count = 4
+popup/item_0/text = "Disabled (Fastest)"
+popup/item_0/id = 0
+popup/item_1/text = "2×"
+popup/item_1/id = 1
+popup/item_2/text = "4×"
+popup/item_2/id = 2
+popup/item_3/text = "8×"
+popup/item_3/id = 3
+
+[node name="DrawingArea" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_0devy")
+
+[node name="Options" type="VFlowContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+
+[connection signal="item_selected" from="HBoxContainer/Methods" to="." method="_on_methods_item_selected"]
