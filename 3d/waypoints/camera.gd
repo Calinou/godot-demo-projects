@@ -40,3 +40,6 @@ func _process(delta: float) -> void:
 	velocity += MOVE_SPEED * delta * (transform.basis * motion)
 	velocity *= 0.85
 	position += velocity
+
+	get_parent().get_node("Minimap").player_position = global_position
+	get_parent().get_node("Minimap").player_rotation = global_rotation.y

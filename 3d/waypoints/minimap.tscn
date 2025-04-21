@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqj00744t8ixd"]
+
+[ext_resource type="Script" uid="uid://dwa3qeldp8k0f" path="res://minimap.gd" id="1_cvo86"]
+[ext_resource type="Texture2D" uid="uid://cgow8dqpnhb4h" path="res://waypoint.svg" id="2_0pgu0"]
+
+[sub_resource type="Gradient" id="Gradient_cvo86"]
+offsets = PackedFloat32Array(0.992, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0pgu0"]
+gradient = SubResource("Gradient_cvo86")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cvo86"]
+viewport_path = NodePath("Mask/SubViewport")
+
+[node name="Minimap" type="Control"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 280.0
+grow_horizontal = 0
+script = ExtResource("1_cvo86")
+
+[node name="Mask" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_0pgu0")
+
+[node name="TextureRect" type="Sprite2D" parent="Mask"]
+self_modulate = Color(1, 1, 1, 0.752941)
+position = Vector2(128, 128)
+texture = SubResource("ViewportTexture_cvo86")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="SubViewport" type="SubViewport" parent="Mask"]
+handle_input_locally = false
+anisotropic_filtering_level = 0
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="Mask/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+projection = 1
+size = 40.0
+far = 150.0
+
+[node name="PlayerArrow" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 118.0
+offset_top = 113.0
+offset_right = 138.0
+offset_bottom = 143.0
+rotation = 3.14159
+pivot_offset = Vector2(10, 15)
+texture = ExtResource("2_0pgu0")
+expand_mode = 1
