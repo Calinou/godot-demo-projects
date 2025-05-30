@@ -33,8 +33,8 @@ func _on_scene_option_button_item_selected(index):
 
 func _on_tonemap_mode_item_selected(index: int) -> void:
 	world_environment.environment.tonemap_mode = index as Environment.ToneMapper
-	# Hide whitepoint if not relevant (Linear and AgX tonemapping do not use a whitepoint).
-	%Whitepoint.visible = world_environment.environment.tonemap_mode != Environment.TONE_MAPPER_LINEAR and world_environment.environment.tonemap_mode != Environment.TONE_MAPPER_AGX
+	# Hide whitepoint if not relevant (Linear tonemapping does not use a whitepoint).
+	%Whitepoint.visible = world_environment.environment.tonemap_mode != Environment.TONE_MAPPER_LINEAR
 
 
 func _on_exposure_value_changed(value: float) -> void:
@@ -44,7 +44,7 @@ func _on_exposure_value_changed(value: float) -> void:
 
 func _on_whitepoint_value_changed(value: float) -> void:
 	world_environment.environment.tonemap_white = value
-	$TonemapMode/Whitepoint/Value.text = str(value).pad_decimals(1)
+	$TonemapMode/Whitepoint/Value.text = str(value).pad_decimals(2)
 
 
 func _on_color_correction_item_selected(index: int) -> void:

@@ -66,6 +66,7 @@ text = "Exposure"
 horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="Options/TonemapMode/Exposure"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -93,19 +94,20 @@ text = "Whitepoint"
 horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="Options/TonemapMode/Whitepoint"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-min_value = 0.1
+min_value = 0.25
 max_value = 16.0
-step = 0.1
-value = 1.0
+step = 0.25
+value = 6.0
 
 [node name="Value" type="Label" parent="Options/TonemapMode/Whitepoint"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
-text = "6.0"
+text = "6.00"
 
 [node name="ColorCorrection" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -173,6 +175,7 @@ text = "Saturation"
 horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="Options/ColorCorrection/Saturation"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
