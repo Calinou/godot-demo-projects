@@ -5,6 +5,7 @@ extends Control
 @onready var plain_text_viewer := $MarginContainer/VBoxContainer/Result/PlainTextViewer as ScrollContainer
 @onready var plain_text_viewer_label := $MarginContainer/VBoxContainer/Result/PlainTextViewer/Label as Label
 @onready var texture_viewer := $MarginContainer/VBoxContainer/Result/TextureViewer as TextureRect
+@onready var texture_viewer_vram_compress := $MarginContainer/VBoxContainer/Result/TextureViewer/VRAMCompress as Button
 @onready var audio_player := $MarginContainer/VBoxContainer/Result/AudioPlayer as Button
 @onready var audio_player_information := $MarginContainer/VBoxContainer/Result/AudioPlayer/Information as Label
 @onready var audio_stream_player := $MarginContainer/VBoxContainer/Result/AudioPlayer/AudioStreamPlayer as AudioStreamPlayer
@@ -29,6 +30,7 @@ var scene_viewer_root_node: Node
 func reset_visibility() -> void:
 	plain_text_viewer.visible = false
 	texture_viewer.visible = false
+	texture_viewer_vram_compress.disabled = false
 	audio_player.visible = false
 
 	scene_viewer.visible = false
@@ -271,3 +273,28 @@ func open_file(path: String) -> void:
 			plain_text_viewer_label.text = file_contents
 			reset_visibility()
 			plain_text_viewer.visible = true
+
+
+func _on_vram_compress_pressed() -> void:
+	var image := texture_viewer.texture.get_image()
+	# Use a supported VRAM compression technique according to what the graphics driver supports.
+	# This is typically determined by the current platform, where S3TC is used on desktop and ETC2 on mobile.
+	# Alternatively, BPTC can be used on desktop and ASTC on mobile for higher quality,
+	# at the cost of slower compression times.
+	if OS.has_feature("bptc"):
+		# High-quality format for desktop platforms.
+		image.compress(Image.COMPRESS_BPTC)
+	elif OS.has_feature("astc"):
+		# High-quality format for mobile platforms.
+		image.compress(Image.COMPRESS_ASTC, Image.COMPRESS_SOURCE_GENERIC, Image.ASTC_FORMAT_4x4)
+	elif OS.has_feature("s3tc"):
+		# Standard quality format for desktop platforms.
+		image.compress(Image.COMPRESS_S3TC)
+	elif OS.has_feature("etc2"):
+		# Standard quality format for mobile platforms.
+		image.compress(Image.COMPRESS_ETC2)
+	else:
+		push_warning("Neither S3TC nor ETC2 is supported on the current GPU. Ignoring VRAM compression.")
+	texture_viewer.texture = ImageTexture.create_from_image(image)
+	texture_viewer_vram_compress.disabled = true
+	print(texture_viewer.texture.get_image().get_format())

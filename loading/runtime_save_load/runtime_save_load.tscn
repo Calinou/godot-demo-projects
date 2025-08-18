@@ -82,7 +82,28 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 expand_mode = 3
 
+[node name="VRAMCompress" type="Button" parent="MarginContainer/VBoxContainer/Result/TextureViewer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -31.0
+offset_right = 81.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Performs lossy block compression to reduce video RAM usage.
+Similar to the VRAM Compressed import mode.
+
+Note that this option does not detect normal maps.
+In a real world project, normal maps should be compressed
+as such when calling `Image.compress()` to avoid quality issues."
+text = "Compress for VRAM"
+
 [node name="AudioPlayer" type="Button" parent="MarginContainer/VBoxContainer/Result"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Play Audio"
@@ -194,6 +215,7 @@ access = 2
 [connection signal="text_submitted" from="MarginContainer/VBoxContainer/HBoxContainer/FilePath" to="." method="_on_file_path_text_submitted"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Browse" to="." method="_on_browse_pressed"]
 [connection signal="file_selected" from="MarginContainer/VBoxContainer/HBoxContainer/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Result/TextureViewer/VRAMCompress" to="." method="_on_vram_compress_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Result/AudioPlayer" to="." method="_on_audio_player_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Result/SceneViewer/Zoom" to="." method="_on_scene_viewer_zoom_value_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/Result/ZIPViewer/FileList" to="." method="_on_zip_viewer_item_selected"]
