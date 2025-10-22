@@ -218,6 +218,7 @@ point_count = 3
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Coin" type="Area3D"]
+collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("1")
 

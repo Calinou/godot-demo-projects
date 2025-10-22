@@ -35,6 +35,11 @@ var coins: int = 0
 @onready var _animation_tree := $AnimationTree as AnimationTree
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ragdoll"):
+		$%CoinCount.visible = false
+		$Player/Skeleton/Skeleton3D/PhysicalBoneSimulator3D.physical_bones_start_simulation(["l-arm", "r-arm"])
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed(&"reset_position") or global_position.y < -12:
 		# Player hit the reset button or fell off the map.
