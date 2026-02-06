@@ -13,6 +13,7 @@ sky_material = ExtResource("2_1df3w")
 [sub_resource type="Environment" id="Environment_dauhq"]
 background_mode = 2
 sky = SubResource("Sky_1gf0c")
+ambient_light_sky_contribution = 0.5
 tonemap_mode = 4
 glow_intensity = 0.5
 fog_enabled = true
@@ -53,6 +54,10 @@ script = ExtResource("1_gxe8p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=710399183]
 environment = SubResource("Environment_dauhq")
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="." unique_id=1768893818]
+autoplay = true
+bus = &"Ambient"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1020825067]
 transform = Transform3D(-0.793955, 0.350561, -0.496732, -0.295414, 0.491651, 0.819152, 0.531381, 0.797111, -0.286788, 11.0084, 12.3453, -31.3148)
