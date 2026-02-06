@@ -7,9 +7,11 @@ const BRAKE_STRENGTH = 2.0
 @export var engine_force_value := 40.0
 
 var previous_speed := linear_velocity.length()
+var headlights_active := false
 var _steer_target := 0.0
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
+
 
 func _physics_process(delta: float) -> void:
 	_steer_target = Input.get_axis(&"turn_right", &"turn_left")
@@ -57,3 +59,33 @@ func _physics_process(delta: float) -> void:
 	steering = move_toward(steering, _steer_target, STEER_SPEED * delta)
 
 	previous_speed = linear_velocity.length()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"toggle_headlights"):
+		toggle_headlights()
+
+
+func toggle_headlights() -> void:
+	for node in get_tree().get_nodes_in_group(&"headlight"):
+		# If we were halfway through the "off" transition upon toggling, consider headlights as
+		# being inactive up to this point. (Therefore, switch them on.)
+		headlights_active = node.light_energy < 1.0
+		var t := get_tree().create_tween()
+
+		if headlights_active:
+			node.visible = true
+
+		t.tween_property(
+				node,
+				^"light_energy",
+				2.0 if headlights_active else 0.0,
+				0.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+		# Hide light node at the end to avoid performance impact when headlights are off
+		# (Godot still renders lights with `light_energy == 0.0` otherwise).
+		if not headlights_active:
+			t.finished.connect(func() -> void:
+				node.visible = false
+			)

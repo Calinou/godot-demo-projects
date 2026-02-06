@@ -173,6 +173,7 @@ light_energy = 2.0
 shadow_enabled = true
 shadow_bias = 0.06
 shadow_blur = 2.0
+shadow_caster_mask = 4294967293
 distance_fade_enabled = true
 distance_fade_begin = 100.0
 distance_fade_shadow = 35.0

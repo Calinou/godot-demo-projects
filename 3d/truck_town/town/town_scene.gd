@@ -5,7 +5,6 @@ enum Mood {
 	DAY,
 	SUNSET,
 	NIGHT,
-	MAX,
 }
 
 var mood := Mood.DAY: set = set_mood
@@ -16,6 +15,11 @@ var compatibility_light: DirectionalLight3D
 
 
 func _ready() -> void:
+	# Ensure headlights are toggled on automatically according to the initial mood.
+	# The scene tree is not available at first, so we have to set the mood a second time
+	# in deferred mode, which will call the setter again.
+	set_deferred(&"mood", mood)
+
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
 		# Use PCF13 shadow filtering to improve quality (Medium maps to PCF5 instead).
 		RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
@@ -30,7 +34,7 @@ func _ready() -> void:
 
 func _input(input_event: InputEvent) -> void:
 	if input_event.is_action_pressed(&"cycle_mood"):
-		mood = wrapi(mood + 1, 0, Mood.MAX) as Mood
+		mood = wrapi(mood + 1, 0, Mood.size()) as Mood
 
 
 func set_mood(p_mood: Mood) -> void:
@@ -71,3 +75,15 @@ func set_mood(p_mood: Mood) -> void:
 		compatibility_light.rotation_degrees = $DirectionalLight3D.rotation_degrees
 		compatibility_light.light_color = $DirectionalLight3D.light_color
 		compatibility_light.light_energy = $DirectionalLight3D.light_energy * 0.2
+
+	if is_inside_tree():
+		var auto_headlights := mood == Mood.SUNSET or mood == Mood.NIGHT
+		var car := get_tree().get_nodes_in_group(&"car")[0]
+		if (
+				# Switch headlights on for nighttime.
+				auto_headlights and not car.headlights_active
+		) or (
+				# Switch headlights off for daytime.
+				not auto_headlights and car.headlights_active
+		):
+			get_tree().call_group(&"car", &"toggle_headlights")
