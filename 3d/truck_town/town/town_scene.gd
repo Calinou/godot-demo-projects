@@ -10,6 +10,13 @@ enum Mood {
 
 var mood := Mood.DAY: set = set_mood
 
+var ambient_sound : Array = [
+	preload("res://town/sound/mood_sunrise.wav"),
+	preload("res://town/sound/mood_day.wav"),
+	preload("res://town/sound/mood_sunset.wav"),
+	preload("res://town/sound/mood_night.wav")
+]
+
 # Only assigned when using the Compatibility rendering method.
 # This is used to darken the sunlight to compensate for sRGB blending (without affecting sky rendering).
 var compatibility_light: DirectionalLight3D
@@ -38,11 +45,12 @@ func _ready() -> void:
 func _input(input_event: InputEvent) -> void:
 	if input_event.is_action_pressed(&"cycle_mood"):
 		mood = wrapi(mood + 1, 0, Mood.MAX) as Mood
+		$AmbientSound.play()
 
 
 func set_mood(p_mood: Mood) -> void:
 	mood = p_mood
-
+	
 	match p_mood:
 		Mood.SUNRISE:
 			$DirectionalLight3D.rotation_degrees = Vector3(-20, -150, -137)
@@ -51,6 +59,7 @@ func set_mood(p_mood: Mood) -> void:
 			$WorldEnvironment.environment.sky.sky_material = preload("res://town/sky_morning.tres")
 			$WorldEnvironment.environment.fog_light_color = Color(0.686, 0.6, 0.467)
 			$ArtificialLights.visible = false
+			
 		Mood.DAY:
 			$DirectionalLight3D.rotation_degrees = Vector3(-55, -120, -31)
 			$DirectionalLight3D.light_color = Color.WHITE
@@ -73,6 +82,8 @@ func set_mood(p_mood: Mood) -> void:
 			$WorldEnvironment.environment.fog_light_color = Color(0.2, 0.149, 0.125)
 			$ArtificialLights.visible = true
 
+	$AmbientSound.stream = ambient_sound[p_mood]
+	
 	if compatibility_light:
 		# Darken the light's energy to compensate for sRGB blending (without affecting sky rendering).
 		compatibility_light.rotation_degrees = $DirectionalLight3D.rotation_degrees
