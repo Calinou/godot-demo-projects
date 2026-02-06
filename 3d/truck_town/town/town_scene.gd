@@ -27,9 +27,8 @@ func setup(car: Node3D, back_callback: Callable, sdfgi: bool) -> void:
 	var car_body: VehicleBody3D = car.get_child(0)
 	
 	car_body.turbometer = %Turbometer
-	car.position = %InstancePos.position
 	%Spedometer.car_body = car_body
-	add_child(car)
+	%InstancePos.add_child(car)
 	
 	%Back.pressed.connect(back_callback)
 	%WorldEnvironment.environment.sdfgi_enabled = sdfgi
