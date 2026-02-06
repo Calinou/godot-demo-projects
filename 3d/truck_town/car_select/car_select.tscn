@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://cgq7v1pxgrqtq"]
 
 [ext_resource type="Script" uid="uid://b6oqxg642iyvi" path="res://car_select/car_select.gd" id="1_jrgrs"]
+[ext_resource type="Texture2D" uid="uid://ppxannqo6rtg" path="res://car_select/choose_van.png" id="2_8injy"]
+[ext_resource type="Texture2D" uid="uid://ieqt5ql863tb" path="res://car_select/choose_trailer.png" id="3_uu0k4"]
+[ext_resource type="Texture2D" uid="uid://ci5uqy6ljstal" path="res://car_select/choose_tow.png" id="4_y5qrv"]
 [ext_resource type="Texture2D" uid="uid://cjmg136aa35d7" path="res://car_select/audio_on.png" id="5_8injy"]
 [ext_resource type="Texture2D" uid="uid://eu0i3m0c3kki" path="res://car_select/audio_off.png" id="6_uu0k4"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jrgrs"]
-load_path = "res://.godot/imported/choose_van.png-3b362e84652f922a48090b01ff1d4138.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_68v1x"]
-load_path = "res://.godot/imported/choose_trailer.png-6a170de4ad2cd57116d552bfedffb452.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6xe50"]
-load_path = "res://.godot/imported/choose_tow.png-15f3c432cd69e776344f5b8fda433967.ctex"
 
 [sub_resource type="FontVariation" id="FontVariation_hqcvw"]
 variation_embolden = 1.0
@@ -64,19 +58,19 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-icon = SubResource("CompressedTexture2D_jrgrs")
+icon = ExtResource("2_8injy")
 
 [node name="TrailerTruck" type="Button" parent="CarContainer" unique_id=1750997618]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-icon = SubResource("CompressedTexture2D_68v1x")
+icon = ExtResource("3_uu0k4")
 
 [node name="TowTruck" type="Button" parent="CarContainer" unique_id=1979324274]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-icon = SubResource("CompressedTexture2D_6xe50")
+icon = ExtResource("4_y5qrv")
 
 [node name="Label" type="Label" parent="." unique_id=1490711664]
 layout_mode = 0
