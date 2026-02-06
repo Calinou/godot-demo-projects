@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://boboc4pk5t03s" path="res://town/sky_day.tres" id="2_1df3w"]
 [ext_resource type="Material" uid="uid://dwj22a5ckgpms" path="res://town/materials/grass.tres" id="2_ubld8"]
 [ext_resource type="Material" uid="uid://bhrhj1ylqw2tp" path="res://town/materials/cement.tres" id="3_8s61a"]
-[ext_resource type="PackedScene" uid="uid://b3cpmxc6oy0fh" path="res://town/lamp/scene.gltf" id="3_clgdk"]
+[ext_resource type="PackedScene" uid="uid://cf2bmynxs522" path="res://town/lamp/lamp_scene.tscn" id="3_clgdk"]
 [ext_resource type="PackedScene" uid="uid://dpgyvcypghjek" path="res://town/tree/scene.gltf" id="3_pxdqy"]
 [ext_resource type="Texture2D" uid="uid://dctnd5sdo5ydj" path="res://town/ui/turbometer.webp" id="8_clgdk"]
 [ext_resource type="Texture2D" uid="uid://hccdo2xu0fl" path="res://town/ui/turbometer_background.webp" id="8_tyv8r"]
@@ -206,143 +206,35 @@ directional_shadow_max_distance = 80.0
 
 [node name="Lamps" type="Node3D" parent="." unique_id=1215593960]
 
-[node name="Lamp" parent="Lamps" unique_id=557156109 instance=ExtResource("3_clgdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.357176, 10.210199, 21.49831)
+[node name="Lamp" parent="Lamps" unique_id=197257794 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.826617, 10.281145, 21.406624)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps/Lamp" unique_id=388734273]
-transform = Transform3D(0.74777937, 0.36788473, -0.5527086, 0, 0.8324587, 0.5540872, 0.6639473, -0.414335, 0.6224954, 0.014965057, 4.1757364, -0.0037269592)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-shadow_caster_mask = 4294967291
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp2" parent="Lamps" unique_id=2090522149 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.36482, 8.762463, 17.41033)
 
-[node name="Lamp2" parent="Lamps" unique_id=262720080 instance=ExtResource("3_clgdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.080498, 8.745809, 17.83305)
+[node name="Lamp3" parent="Lamps" unique_id=535773629 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.877937, 11.294644, -5.150609)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps/Lamp2" unique_id=582123831]
-transform = Transform3D(0.74777937, 0.36788473, -0.5527086, 0, 0.8324587, 0.5540872, 0.6639473, -0.414335, 0.6224954, 0.014965057, 4.1757364, -0.0037269592)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-shadow_caster_mask = 4294967291
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp5" parent="Lamps" unique_id=1464671789 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.558727, 9.149303, -7.0745764)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lamps" unique_id=2092552070]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 14.1028, 11.5868, -6.1748)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp6" parent="Lamps" unique_id=1356141107 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.047234, 5.208529, 4.7793546)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lamps" unique_id=1323055297]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 36.1028, 13.5868, -7.1748)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp7" parent="Lamps" unique_id=1311607581 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.494762, 5.208529, 4.762315)
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Lamps" unique_id=900519224]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 45.1028, 13.5868, -17.1748)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp8" parent="Lamps" unique_id=1266984698 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.80326, 5.208529, 22.523823)
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="Lamps" unique_id=1076878794]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -20.8972, 7.58679, 4.8252)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp9" parent="Lamps" unique_id=427644885 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.958977, 8.124198, -17.695438)
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="Lamps" unique_id=1097123312]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -15.8972, 7.58679, 20.8252)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp10" parent="Lamps" unique_id=1199446858 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.080837, 8.124197, 0.42528152)
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="Lamps" unique_id=394109811]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -44.8972, 10.5868, 4.8252)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
-
-[node name="OmniLight3D9" type="OmniLight3D" parent="Lamps" unique_id=635821681]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -43.8972, 10.5868, -15.1748)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
-
-[node name="OmniLight3D10" type="OmniLight3D" parent="Lamps" unique_id=590176993]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -15.7972, 3.58679, -71.175)
-light_color = Color(1, 0.941176, 0.705882, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_bias = 0.06
-shadow_blur = 2.0
-distance_fade_enabled = true
-distance_fade_begin = 100.0
-distance_fade_shadow = 35.0
-distance_fade_length = 15.0
-omni_range = 15.0
+[node name="Lamp4" parent="Lamps" unique_id=2075708260 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.96642, 11.294643, -7.1991215)
 
 [node name="InstancePos" type="Marker3D" parent="." unique_id=89081834]
 unique_name_in_owner = true

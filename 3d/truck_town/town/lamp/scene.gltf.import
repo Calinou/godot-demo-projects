@@ -40,7 +40,7 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Sketchfab_model/root/GLTF_SceneRootNode/Lowpoly lamp_105/Object_4": {
-"mesh_instance/layers": 4
+"mesh_instance/layers": 2
 }
 }
 }
