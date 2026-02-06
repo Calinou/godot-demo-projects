@@ -30,6 +30,7 @@ Renderer: Forward+
 
 ## Model Credit:
 [tree low-poly](https://sketchfab.com/3d-models/tree-low-poly-4cd243eb74c74b3ea2190ebcec0439fb) by Ricardo Sanchez (https://sketchfab.com/380660711785)
+[Lowpoly lamp](https://sketchfab.com/3d-models/lowpoly-lamp-c020f6af78f7482f8cf2ac84d05c08a5) by RitiWox (https://sketchfab.com/RitiWox)
 
 Check out this demo on the asset library: https://godotengine.org/asset-library/asset/2752
 
