@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://boboc4pk5t03s" path="res://town/sky_day.tres" id="2_1df3w"]
 [ext_resource type="Material" uid="uid://dwj22a5ckgpms" path="res://town/materials/grass.tres" id="2_ubld8"]
 [ext_resource type="Material" uid="uid://bhrhj1ylqw2tp" path="res://town/materials/cement.tres" id="3_8s61a"]
+[ext_resource type="PackedScene" uid="uid://b3cpmxc6oy0fh" path="res://town/lamp/scene.gltf" id="3_clgdk"]
 [ext_resource type="PackedScene" uid="uid://dpgyvcypghjek" path="res://town/tree/scene.gltf" id="3_pxdqy"]
 
 [sub_resource type="Sky" id="Sky_1gf0c"]
@@ -93,36 +94,43 @@ shadow_blur = 1.5
 directional_shadow_mode = 0
 directional_shadow_max_distance = 80.0
 
-[node name="ArtificialLights" type="Node3D" parent="." unique_id=1215593960]
-visible = false
+[node name="Lamps" type="Node3D" parent="." unique_id=1215593960]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="ArtificialLights" unique_id=579357381]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 38.1028, 10.5868, 14.8252)
+[node name="Lamp" parent="Lamps" unique_id=557156109 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.357176, 10.210199, 21.49831)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps/Lamp" unique_id=388734273]
+transform = Transform3D(0.74777937, 0.36788473, -0.5527086, 0, 0.8324587, 0.5540872, 0.6639473, -0.414335, 0.6224954, 0.014965057, 4.1757364, -0.0037269592)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
 shadow_enabled = true
 shadow_bias = 0.06
 shadow_blur = 2.0
+shadow_caster_mask = 4294967291
 distance_fade_enabled = true
 distance_fade_begin = 100.0
 distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="ArtificialLights" unique_id=388734273]
-transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 13.1028, 11.5868, 20.8252)
+[node name="Lamp2" parent="Lamps" unique_id=262720080 instance=ExtResource("3_clgdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.080498, 8.745809, 17.83305)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps/Lamp2" unique_id=582123831]
+transform = Transform3D(0.74777937, 0.36788473, -0.5527086, 0, 0.8324587, 0.5540872, 0.6639473, -0.414335, 0.6224954, 0.014965057, 4.1757364, -0.0037269592)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
 shadow_enabled = true
 shadow_bias = 0.06
 shadow_blur = 2.0
+shadow_caster_mask = 4294967291
 distance_fade_enabled = true
 distance_fade_begin = 100.0
 distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="ArtificialLights" unique_id=2092552070]
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lamps" unique_id=2092552070]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 14.1028, 11.5868, -6.1748)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -135,7 +143,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="ArtificialLights" unique_id=1323055297]
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lamps" unique_id=1323055297]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 36.1028, 13.5868, -7.1748)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -148,7 +156,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="ArtificialLights" unique_id=900519224]
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lamps" unique_id=900519224]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, 45.1028, 13.5868, -17.1748)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -161,7 +169,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="ArtificialLights" unique_id=1076878794]
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lamps" unique_id=1076878794]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -20.8972, 7.58679, 4.8252)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -174,7 +182,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="ArtificialLights" unique_id=1097123312]
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lamps" unique_id=1097123312]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -15.8972, 7.58679, 20.8252)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -187,7 +195,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="ArtificialLights" unique_id=394109811]
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lamps" unique_id=394109811]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -44.8972, 10.5868, 4.8252)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -200,7 +208,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D9" type="OmniLight3D" parent="ArtificialLights" unique_id=635821681]
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lamps" unique_id=635821681]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -43.8972, 10.5868, -15.1748)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -213,7 +221,7 @@ distance_fade_shadow = 35.0
 distance_fade_length = 15.0
 omni_range = 15.0
 
-[node name="OmniLight3D10" type="OmniLight3D" parent="ArtificialLights" unique_id=590176993]
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lamps" unique_id=590176993]
 transform = Transform3D(0.747779, 0.367885, -0.552709, 0, 0.832459, 0.554087, 0.663947, -0.414335, 0.622495, -15.7972, 3.58679, -71.175)
 light_color = Color(1, 0.941176, 0.705882, 1)
 light_energy = 2.0
@@ -232,16 +240,16 @@ transform = Transform3D(3.57628e-07, 0, -1, 0, 1, 0, 1, 0, 3.57628e-07, 35.48, 8
 
 [node name="TownModel" parent="." unique_id=1541596250 instance=ExtResource("1_amwer")]
 
-[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1147236683) index="0" unique_id=405009130]
+[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1540772309) index="0" unique_id=632276329]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1147236683) index="2" unique_id=1323098657]
+[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1540772309) index="2" unique_id=2021877556]
 surface_material_override/0 = ExtResource("3_8s61a")
 
-[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1147236683) index="4" unique_id=99731491]
+[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1540772309) index="4" unique_id=84097862]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 492416428) index="0" unique_id=1108796885]
+[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 1739830287) index="0" unique_id=760778737]
 surface_material_override/0 = ExtResource("3_8s61a")
 
 [node name="Trees" type="Node3D" parent="TownModel" unique_id=637052945]
