@@ -10,7 +10,7 @@ enum Mood {
 
 var mood := Mood.DAY: set = set_mood
 
-var turn_on_lights = false
+var turn_on_lights : bool = false
 var ambient_sound : Array = [
 	preload("res://town/sound/mood_sunrise.wav"),
 	preload("res://town/sound/mood_day.wav"),
