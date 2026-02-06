@@ -7,11 +7,18 @@ const BRAKE_STRENGTH = 2.0
 @export var engine_force_value := 40.0
 
 var turbometer: Range
+var turbo_animator: AnimationPlayer
 
 var previous_speed := linear_velocity.length()
+var turbo_active: bool
 var _steer_target := 0.0
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
+
+func _ready() -> void:
+	assert(turbometer)
+	assert(turbo_animator)
+
 
 func _physics_process(delta: float) -> void:
 	_steer_target = Input.get_axis(&"turn_right", &"turn_left")
@@ -31,7 +38,11 @@ func _physics_process(delta: float) -> void:
 			Input.start_joy_vibration(joypad, 0.0, 0.5, 0.1)
 
 	var turbo_pressed := Input.is_action_pressed(&"boost")
-	var turbo_active := turbo_pressed and turbometer.value > 0
+	var new_turbo_active := turbo_pressed and turbometer.value > 0
+	if new_turbo_active != turbo_active:
+		turbo_animator.play(&"TURBO" if new_turbo_active else &"Idle")
+	
+	turbo_active = new_turbo_active
 	if turbo_active:
 		turbometer.value -= delta * 3.0
 	elif not turbo_pressed:

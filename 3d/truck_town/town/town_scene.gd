@@ -27,6 +27,7 @@ func setup(car: Node3D, back_callback: Callable, sdfgi: bool) -> void:
 	var car_body: VehicleBody3D = car.get_child(0)
 	
 	car_body.turbometer = %Turbometer
+	car_body.turbo_animator = %TurboAnimator
 	%Spedometer.car_body = car_body
 	%InstancePos.add_child(car)
 	

@@ -8,6 +8,8 @@
 [ext_resource type="Material" uid="uid://bhrhj1ylqw2tp" path="res://town/materials/cement.tres" id="3_8s61a"]
 [ext_resource type="PackedScene" uid="uid://b3cpmxc6oy0fh" path="res://town/lamp/scene.gltf" id="3_clgdk"]
 [ext_resource type="PackedScene" uid="uid://dpgyvcypghjek" path="res://town/tree/scene.gltf" id="3_pxdqy"]
+[ext_resource type="Texture2D" uid="uid://dctnd5sdo5ydj" path="res://town/ui/turbometer.webp" id="8_clgdk"]
+[ext_resource type="Texture2D" uid="uid://hccdo2xu0fl" path="res://town/ui/turbometer_background.webp" id="8_tyv8r"]
 
 [sub_resource type="Sky" id="Sky_1gf0c"]
 sky_material = ExtResource("2_1df3w")
@@ -36,25 +38,133 @@ events = [SubResource("InputEventAction_a4722")]
 offsets = PackedFloat32Array(0, 0.2, 1)
 colors = PackedColorArray(0.7019608, 0.9019608, 1, 1, 1, 1, 1, 1, 1, 0.3019608, 0.101960786, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nng2a"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="Animation" id="Animation_tyv8r"]
+resource_name = "Idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.46711743, 0.46711743, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.48684698, 0.48684698, 0.48684698, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.12085515]
+}
 
-[sub_resource type="Gradient" id="Gradient_pxdqy"]
-colors = PackedColorArray(0, 0.8190596, 1, 1, 1, 0.55226016, 0, 1)
+[sub_resource type="Animation" id="Animation_w44mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.46711743, 0.46711743, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.48684698, 0.48684698, 0.48684698, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.12085515]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_clgdk"]
-gradient = SubResource("Gradient_pxdqy")
-width = 256
-height = 16
+[sub_resource type="Animation" id="Animation_pvdab"]
+resource_name = "TURBO"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.3444354, 0, 1), Color(1, 0.734516, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.82693917, 0, 1), Color(1, 0.12493098, 0, 1), Color(1, 0.4092583, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.12085515, 0.13720608, -0.12085515, 0.13720608, -0.12085515, 0.13720608]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w44mb"]
+_data = {
+&"Idle": SubResource("Animation_tyv8r"),
+&"RESET": SubResource("Animation_w44mb"),
+&"TURBO": SubResource("Animation_pvdab")
+}
 
 [sub_resource type="Gradient" id="Gradient_jks6h"]
 offsets = PackedFloat32Array(0)
@@ -327,20 +437,44 @@ text = "Speed: ???"
 script = ExtResource("2")
 tint_gradient = SubResource("Gradient_nng2a")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=996367876]
-offset_left = 714.0
-offset_top = 592.0
-offset_right = 978.0
-offset_bottom = 616.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nng2a")
-
-[node name="Turbometer" type="TextureProgressBar" parent="PanelContainer" unique_id=1826510602]
+[node name="Turbometer" type="TextureProgressBar" parent="." unique_id=1826510602]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = 715.0
+offset_top = 548.0
+offset_right = 975.0
+offset_bottom = 616.0
 max_value = 10.0
 step = 0.0
 value = 10.0
-texture_progress = SubResource("GradientTexture2D_clgdk")
+texture_under = ExtResource("8_tyv8r")
+texture_progress = ExtResource("8_clgdk")
+texture_progress_offset = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="Turbometer" unique_id=2108878540]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -25.0
+offset_right = 61.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.12085515
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.48684698, 0.48684698, 0.48684698, 1)
+theme_override_colors/font_outline_color = Color(1, 0.46711743, 0.46711743, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "TURBO"
+
+[node name="TurboAnimator" type="AnimationPlayer" parent="Turbometer" unique_id=1708193836]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_w44mb")
+autoplay = &"Idle"
 
 [node name="Back" type="Button" parent="." unique_id=2142412231]
 unique_name_in_owner = true
