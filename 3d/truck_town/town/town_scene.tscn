@@ -26,6 +26,10 @@ action = &"cycle_speedometer_unit"
 [sub_resource type="Shortcut" id="Shortcut_msvqx"]
 events = [SubResource("InputEventAction_a4722")]
 
+[sub_resource type="Gradient" id="Gradient_nng2a"]
+offsets = PackedFloat32Array(0, 0.2, 1)
+colors = PackedColorArray(0.7019608, 0.9019608, 1, 1, 1, 1, 1, 1, 1, 0.3019608, 0.101960786, 1)
+
 [sub_resource type="Gradient" id="Gradient_jks6h"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 1, 1, 0.25098)
@@ -231,6 +235,7 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Speed: ???"
 script = ExtResource("2")
+tint_gradient = SubResource("Gradient_nng2a")
 
 [node name="Back" type="Button" parent="." unique_id=2142412231]
 unique_name_in_owner = true
