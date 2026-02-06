@@ -42,6 +42,7 @@ func _ready() -> void:
 	# The scene tree is not available at first, so we have to set the mood a second time
 	# in deferred mode, which will call the setter again.
 	set_deferred(&"mood", mood)
+	controls_sheet.hide()
 
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
 		# Use PCF13 shadow filtering to improve quality (Medium maps to PCF5 instead).
