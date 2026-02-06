@@ -12,6 +12,9 @@ varying complexity using vehicle physics.
 - <kbd>U</kbd>, <kbd>Gamepad Select</kbd>, left-click speedometer: Change speedometer unit (m/s, km/h, mph)
 - <kbd>C</kbd>, <kbd>Gamepad Y/Triangle</kbd>: Change camera (exterior, interior, top-down)
 - <kbd>M</kbd>, <kbd>Gamepad D-Pad Down</kbd>: Change mood (sunrise, day, sunset, night)
+- <kbd>Space</kbd>: Use boost
+- <kbd>H</kbd>, <kbd>Enter</kbd>, <kbd>Gamepad Left Stick Press</kbd>: Use horn
+- <kbd>L</kbd>, <kbd>Gamepad Right Stick Press</kbd>: Toggle headhlights
 - <kbd>Escape</kbd>, <kbd>Gamepad D-Pad Up</kbd>: Go back to menu (press again to exit)
 
 On mobile platforms, the vehicle automatically accelerates. Touch the left and
@@ -22,7 +25,7 @@ Language: GDScript
 
 Renderer: Forward+
 
-## Sound Credit: 
+## Sound Credit:
 [`Sunrise`](https://freesound.org/people/nyoz/sounds/614202/)
 [`Day`](https://freesound.org/people/pawsound/sounds/154880/)
 [`Sunset`](https://freesound.org/people/roisin.gleeson/sounds/699131/)

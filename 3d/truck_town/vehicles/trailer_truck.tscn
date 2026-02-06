@@ -153,7 +153,7 @@ size = Vector3(1.24025, 0.429309, 1.85267)
 
 [node name="TrailerTruck" type="Node3D" unique_id=751295278]
 
-[node name="Body" type="VehicleBody3D" parent="." unique_id=1817518271]
+[node name="Body" type="VehicleBody3D" parent="." unique_id=1817518271 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
 center_of_mass_mode = 1
 script = ExtResource("1_wetfm")
@@ -283,6 +283,22 @@ texture_albedo = ExtResource("11_ifj1h")
 upper_fade = 2.0
 lower_fade = 1.0
 cull_mask = 1048573
+
+[node name="HeadlightL" type="SpotLight3D" parent="Body" unique_id=1440581202 groups=["headlight"]]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0.47184074, 0.13115557, 1.3826402)
+light_color = Color(1, 0.9411765, 0.8627451, 1)
+light_energy = 0.0
+spot_range = 30.0
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
+
+[node name="HeadlightR" type="SpotLight3D" parent="Body" unique_id=1984797223 groups=["headlight"]]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -0.47449952, 0.13860829, 1.3812557)
+light_color = Color(1, 0.9411765, 0.8627451, 1)
+light_energy = 0.0
+spot_range = 30.0
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Body" unique_id=1879037702]
 current = true

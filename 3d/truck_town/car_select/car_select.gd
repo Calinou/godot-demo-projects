@@ -20,12 +20,12 @@ var town: Node3D = null
 func _ready() -> void:
 	# Automatically focus the first item for gamepad accessibility.
 	focus_first_car()
-	
+
 	# Initialiise audio slider
 	slider_volume.value = AudioServer.get_bus_volume_linear(audio_master)
-	
+
 	# Hide SDFGI button if this is using a renderer that doesn't support it
-	button_sdfgi.visible = RenderingServer.get_current_rendering_method() == "forward_plus" 
+	button_sdfgi.visible = RenderingServer.get_current_rendering_method() == "forward_plus"
 
 
 func _process(_delta: float) -> void:
@@ -41,11 +41,11 @@ func _load_scene(car_scene: PackedScene) -> void:
 	# Show loading screen and wait for it to be rendered
 	loading_screen.visible = true
 	await RenderingServer.frame_post_draw
-	
+
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
 	town = preload("res://town/town_scene.tscn").instantiate()
-	
+
 	if button_sunrise.button_pressed:
 		town.mood = town.Mood.SUNRISE
 	elif button_day.button_pressed:
@@ -54,7 +54,7 @@ func _load_scene(car_scene: PackedScene) -> void:
 		town.mood = town.Mood.SUNSET
 	elif button_night.button_pressed:
 		town.mood = town.Mood.NIGHT
-	
+
 	town.setup(car, _on_back_pressed, button_sdfgi.button_pressed)
 
 	get_parent().add_child(town)

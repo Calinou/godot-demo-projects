@@ -54,7 +54,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="CarBase" type="Node3D" unique_id=340126786]
 
-[node name="Body" type="VehicleBody3D" parent="." unique_id=325766941]
+[node name="Body" type="VehicleBody3D" parent="." unique_id=325766941 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
 physics_material_override = SubResource("PhysicsMaterial_l7i2k")
 center_of_mass_mode = 1
@@ -180,6 +180,22 @@ texture_albedo = ExtResource("11_3ryw5")
 upper_fade = 2.0
 lower_fade = 1.0
 cull_mask = 1048573
+
+[node name="HeadlightL" type="SpotLight3D" parent="Body" unique_id=1089211099 groups=["headlight"]]
+transform = Transform3D(1, 0, 0, 0, -0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, 0.4684496, 0.14529891, 1.390707)
+light_color = Color(1, 0.9411765, 0.8627451, 1)
+light_energy = 0.0
+spot_range = 30.0
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
+
+[node name="HeadlightR" type="SpotLight3D" parent="Body" unique_id=1471719154 groups=["headlight"]]
+transform = Transform3D(1, 0, 0, 0, -0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, -0.47789067, 0.15275164, 1.3893225)
+light_color = Color(1, 0.9411765, 0.8627451, 1)
+light_energy = 0.0
+spot_range = 30.0
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Body" unique_id=409839431]
 current = true

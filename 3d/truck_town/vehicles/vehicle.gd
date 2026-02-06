@@ -10,10 +10,12 @@ var turbometer: Range
 var turbo_animator: AnimationPlayer
 
 var previous_speed := linear_velocity.length()
-var turbo_active: bool
+var turbo_active := false
+var headlights_active := false
 var _steer_target := 0.0
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
+
 
 func _ready() -> void:
 	assert(turbometer)
@@ -41,18 +43,18 @@ func _physics_process(delta: float) -> void:
 	var new_turbo_active := turbo_pressed and turbometer.value > 0
 	if new_turbo_active != turbo_active:
 		turbo_animator.play(&"TURBO" if new_turbo_active else &"Idle")
-	
+
 	turbo_active = new_turbo_active
 	if turbo_active:
 		turbometer.value -= delta * 3.0
 	elif not turbo_pressed:
 		turbometer.value += delta
-	
+
 	if turbo_active:
 		constant_force = global_transform.basis.z * 400.0
 	else:
 		constant_force = Vector3()
-	
+
 	# Automatically accelerate when using touch controls (reversing overrides acceleration).
 	if DisplayServer.is_touchscreen_available() or Input.is_action_pressed(&"accelerate"):
 		# Increase engine force at low speeds to make the initial acceleration faster.
@@ -82,6 +84,36 @@ func _physics_process(delta: float) -> void:
 	steering = move_toward(steering, _steer_target, STEER_SPEED * delta)
 
 	previous_speed = linear_velocity.length()
-	
-	if Input.is_action_just_pressed("honk"):
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"toggle_headlights"):
+		toggle_headlights()
+
+	if event.is_action_pressed(&"honk"):
 		$HonkSound.play()
+
+
+func toggle_headlights() -> void:
+	for node in get_tree().get_nodes_in_group(&"headlight"):
+		# If we were halfway through the "off" transition upon toggling, consider headlights as
+		# being inactive up to this point. (Therefore, switch them on.)
+		headlights_active = node.light_energy < 1.0
+		var t := get_tree().create_tween()
+
+		if headlights_active:
+			node.visible = true
+
+		t.tween_property(
+				node,
+				^"light_energy",
+				2.0 if headlights_active else 0.0,
+				0.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+		# Hide light node at the end to avoid performance impact when headlights are off
+		# (Godot still renders lights with `light_energy == 0.0` otherwise).
+		if not headlights_active:
+			t.finished.connect(func() -> void:
+				node.visible = false
+			)
