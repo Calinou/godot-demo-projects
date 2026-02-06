@@ -6,12 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ci5uqy6ljstal" path="res://car_select/choose_tow.png" id="4_y5qrv"]
 [ext_resource type="Texture2D" uid="uid://cjmg136aa35d7" path="res://car_select/audio_on.png" id="5_8injy"]
 [ext_resource type="Texture2D" uid="uid://eu0i3m0c3kki" path="res://car_select/audio_off.png" id="6_uu0k4"]
-
-[sub_resource type="FontVariation" id="FontVariation_hqcvw"]
-variation_embolden = 1.0
-variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
-spacing_glyph = -1
-spacing_space = 4
+[ext_resource type="Texture2D" uid="uid://7imikkhjt0t" path="res://trucktown.png" id="7_uu0k4"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_lcrm3"]
 
@@ -86,26 +81,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 icon = ExtResource("4_y5qrv")
-
-[node name="Label" type="Label" parent="." unique_id=1490711664]
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -180.0
-offset_top = 32.0
-offset_right = 180.0
-offset_bottom = 123.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.494118, 0.858824, 0.960784, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.25098, 1, 0.12549)
-theme_override_colors/font_outline_color = Color(0.105882, 0.278431, 0.47451, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 6
-theme_override_constants/outline_size = 38
-theme_override_constants/shadow_outline_size = 38
-theme_override_fonts/font = SubResource("FontVariation_hqcvw")
-theme_override_font_sizes/font_size = 64
-text = "Truck Town"
 
 [node name="MoodPanel" type="PanelContainer" parent="." unique_id=987428814]
 layout_mode = 1
@@ -244,6 +219,16 @@ text = "loading...
 (this might take a while)"
 label_settings = SubResource("LabelSettings_8injy")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1991765919]
+layout_mode = 0
+offset_left = 92.0
+offset_top = -156.0
+offset_right = 933.35535
+offset_bottom = 338.0
+mouse_filter = 2
+texture = ExtResource("7_uu0k4")
+expand_mode = 1
 
 [connection signal="pressed" from="CarContainer/MiniVan" to="." method="_on_mini_van_pressed"]
 [connection signal="pressed" from="CarContainer/TrailerTruck" to="." method="_on_trailer_truck_pressed"]
