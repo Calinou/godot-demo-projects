@@ -22,6 +22,12 @@ Language: GDScript
 
 Renderer: Forward+
 
+Sound Credit: 
+[`Sunrise`](https://freesound.org/people/nyoz/sounds/614202/)
+[`Day`](https://freesound.org/people/pawsound/sounds/154880/)
+[`Sunset`](https://freesound.org/people/roisin.gleeson/sounds/699131/)
+[`Night`](https://freesound.org/people/DidntGoToFilmSchool/sounds/248103/)
+
 Check out this demo on the asset library: https://godotengine.org/asset-library/asset/2752
 
 ## How does it work?
