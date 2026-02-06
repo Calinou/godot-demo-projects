@@ -35,9 +35,9 @@ func focus_first_car() -> void:
 
 
 func _load_scene(car_scene: PackedScene) -> void:
-	# Show loading screen and wait one frame to ensure that it was rendered
+	# Show loading screen and wait for it to be rendered
 	loading_screen.visible = true
-	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
 	
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
