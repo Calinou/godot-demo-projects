@@ -35,6 +35,26 @@ events = [SubResource("InputEventAction_a4722")]
 offsets = PackedFloat32Array(0, 0.2, 1)
 colors = PackedColorArray(0.7019608, 0.9019608, 1, 1, 1, 1, 1, 1, 1, 0.3019608, 0.101960786, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nng2a"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Gradient" id="Gradient_pxdqy"]
+colors = PackedColorArray(0, 0.8190596, 1, 1, 1, 0.55226016, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_clgdk"]
+gradient = SubResource("Gradient_pxdqy")
+width = 256
+height = 16
+
 [sub_resource type="Gradient" id="Gradient_jks6h"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 1, 1, 0.25098)
@@ -298,6 +318,21 @@ shortcut_in_tooltip = false
 text = "Speed: ???"
 script = ExtResource("2")
 tint_gradient = SubResource("Gradient_nng2a")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=996367876]
+offset_left = 714.0
+offset_top = 592.0
+offset_right = 978.0
+offset_bottom = 616.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nng2a")
+
+[node name="Turbometer" type="TextureProgressBar" parent="PanelContainer" unique_id=1826510602]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+step = 0.0
+value = 10.0
+texture_progress = SubResource("GradientTexture2D_clgdk")
 
 [node name="Back" type="Button" parent="." unique_id=2142412231]
 unique_name_in_owner = true

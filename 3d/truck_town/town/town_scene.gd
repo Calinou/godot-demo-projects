@@ -23,8 +23,14 @@ var compatibility_light: DirectionalLight3D
 
 
 func setup(car: Node3D, back_callback: Callable, sdfgi: bool) -> void:
-	%InstancePos.add_child(car)
-	%Spedometer.car_body = car.get_child(0)
+	# A car scene may have vehicles.
+	var car_body: VehicleBody3D = car.get_child(0)
+	
+	car_body.turbometer = %Turbometer
+	car.position = %InstancePos.position
+	%Spedometer.car_body = car_body
+	add_child(car)
+	
 	%Back.pressed.connect(back_callback)
 	%WorldEnvironment.environment.sdfgi_enabled = sdfgi
 
