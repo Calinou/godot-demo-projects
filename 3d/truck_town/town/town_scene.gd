@@ -7,6 +7,8 @@ enum Mood {
 	NIGHT,
 }
 
+@onready var controls_sheet: Control = %Controls
+
 var mood := Mood.DAY: set = set_mood
 
 var turn_on_lights : bool = false
@@ -59,6 +61,8 @@ func _input(input_event: InputEvent) -> void:
 		$AmbientSound.play()
 		for l in $Lamps.get_children():
 			l.Light.visible = turn_on_lights
+	elif input_event.is_action_pressed(&"toggle_controls"):
+		controls_sheet.visible = not controls_sheet.visible
 
 func set_mood(p_mood: Mood) -> void:
 	mood = p_mood

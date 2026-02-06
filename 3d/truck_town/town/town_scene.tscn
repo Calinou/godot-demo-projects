@@ -28,6 +28,13 @@ fog_sky_affect = 0.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pxdqy"]
 height = 7.2680664
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_w44mb"]
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+color = Color(1, 1, 1, 1)
+grow_begin = -8.0
+grow_end = -8.0
+
 [sub_resource type="Animation" id="Animation_tyv8r"]
 resource_name = "Idle"
 step = 0.1
@@ -306,7 +313,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8510952, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.774849, 0)
 shape = SubResource("CapsuleShape3D_pxdqy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=883662698]
+[node name="GameUI" type="VBoxContainer" parent="." unique_id=870721625]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 98.0
+theme_override_constants/separation = 20
+
+[node name="Back" type="Button" parent="GameUI" unique_id=2142412231]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "« Back"
+
+[node name="PanelContainer" type="PanelContainer" parent="GameUI" unique_id=205809658]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/PanelContainer" unique_id=1853055574]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/PanelContainer/MarginContainer" unique_id=1818956248]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1745945643]
+layout_mode = 2
+text = "F1 - Toggle controls"
+
+[node name="Controls" type="VBoxContainer" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=886070146]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=514069778]
+layout_mode = 2
+text = "Arrows - Drive
+Enter - Honk
+Space - Turbo"
+
+[node name="HSeparator" type="HSeparator" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=1593160399]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_w44mb")
+
+[node name="Label2" type="Label" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=1268511783]
+layout_mode = 2
+text = "C - Cycle camera
+U - Cycle speed units
+M - Cycle mood"
+
+[node name="CarUI" type="HBoxContainer" parent="." unique_id=883662698]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -319,7 +376,7 @@ offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Turbometer" type="TextureProgressBar" parent="HBoxContainer" unique_id=1826510602]
+[node name="Turbometer" type="TextureProgressBar" parent="CarUI" unique_id=1826510602]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 10.0
@@ -329,7 +386,7 @@ texture_under = ExtResource("8_tyv8r")
 texture_progress = ExtResource("8_clgdk")
 texture_progress_offset = Vector2(2, 2)
 
-[node name="Label" type="Label" parent="HBoxContainer/Turbometer" unique_id=2108878540]
+[node name="Label" type="Label" parent="CarUI/Turbometer" unique_id=2108878540]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -350,12 +407,12 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 30
 text = "TURBO"
 
-[node name="TurboAnimator" type="AnimationPlayer" parent="HBoxContainer/Turbometer" unique_id=1708193836]
+[node name="TurboAnimator" type="AnimationPlayer" parent="CarUI/Turbometer" unique_id=1708193836]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_w44mb")
 autoplay = &"Idle"
 
-[node name="Spedometer" type="Button" parent="HBoxContainer" unique_id=294256170]
+[node name="Spedometer" type="Button" parent="CarUI" unique_id=294256170]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
@@ -368,14 +425,6 @@ shortcut_in_tooltip = false
 text = "Speed: ???"
 script = ExtResource("2")
 tint_gradient = SubResource("Gradient_nng2a")
-
-[node name="Back" type="Button" parent="." unique_id=2142412231]
-unique_name_in_owner = true
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 92.0
-offset_bottom = 56.0
-text = "« Back"
 
 [node name="TouchTurnLeft" type="Control" parent="." unique_id=325944973]
 layout_mode = 3
@@ -434,6 +483,6 @@ passby_press = true
 action = "turn_right"
 visibility_mode = 1
 
-[connection signal="pressed" from="HBoxContainer/Spedometer" to="HBoxContainer/Spedometer" method="_on_spedometer_pressed"]
+[connection signal="pressed" from="CarUI/Spedometer" to="CarUI/Spedometer" method="_on_spedometer_pressed"]
 
 [editable path="TownModel"]
