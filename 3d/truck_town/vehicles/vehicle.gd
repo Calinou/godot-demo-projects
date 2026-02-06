@@ -71,3 +71,6 @@ func _physics_process(delta: float) -> void:
 	steering = move_toward(steering, _steer_target, STEER_SPEED * delta)
 
 	previous_speed = linear_velocity.length()
+	
+	if Input.is_action_just_pressed("honk"):
+		$HonkSound.play()

@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bqrwin8ccgptt" path="res://vehicles/meshes/wheel.res" id="2_q28iu"]
 [ext_resource type="ArrayMesh" uid="uid://ctglc27jx8xe2" path="res://vehicles/meshes/truck_cab.res" id="3_t1je7"]
 [ext_resource type="Script" uid="uid://bpgd2w0obg3tl" path="res://vehicles/follow_camera.gd" id="4_4yhuf"]
+[ext_resource type="AudioStream" uid="uid://lq7mji2lisb1" path="res://vehicles/honk_4.wav" id="5_qe823"]
 [ext_resource type="AudioStream" uid="uid://bwmbj0hptxpp2" path="res://vehicles/impact_1.wav" id="6_n54jl"]
 [ext_resource type="AudioStream" uid="uid://2ukhlukq60ge" path="res://vehicles/engine.wav" id="6_r21ue"]
 [ext_resource type="AudioStream" uid="uid://g504na8iwq65" path="res://vehicles/impact_2.wav" id="7_i1avs"]
@@ -244,6 +245,9 @@ script = ExtResource("4_4yhuf")
 min_distance = 5.0
 max_distance = 7.0
 height = 2.5
+
+[node name="HonkSound" type="AudioStreamPlayer3D" parent="Body" unique_id=819906724]
+stream = ExtResource("5_qe823")
 
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="Body" unique_id=147702566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169557, -0.222867, 0.0955184)

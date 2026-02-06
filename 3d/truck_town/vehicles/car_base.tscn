@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://g504na8iwq65" path="res://vehicles/impact_2.wav" id="7_e8n8v"]
 [ext_resource type="AudioStream" uid="uid://cnrem1y1qiu0m" path="res://vehicles/impact_3.wav" id="8_mh5uv"]
 [ext_resource type="AudioStream" uid="uid://dyq28bk7fqj44" path="res://vehicles/impact_4.wav" id="9_bomp1"]
+[ext_resource type="AudioStream" uid="uid://2kuq7xwmeuhj" path="res://vehicles/honk_3.wav" id="10_yg6w8"]
 [ext_resource type="Texture2D" uid="uid://c6nommjyxiscs" path="res://vehicles/blob_shadow.png" id="11_3ryw5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l7i2k"]
@@ -153,6 +154,9 @@ stream = SubResource("AudioStreamRandomizer_bpr2q")
 volume_db = -10.0
 max_polyphony = 3
 bus = &"Vehicle"
+
+[node name="HonkSound" type="AudioStreamPlayer3D" parent="Body" unique_id=609361233]
+stream = ExtResource("10_yg6w8")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body" unique_id=938826726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
