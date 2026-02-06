@@ -3,7 +3,7 @@
 This is a demo implementing different types of trucks of
 varying complexity using vehicle physics.
 
-Controls:
+## Controls:
 
 - <kbd>Up Arrow</kbd>, <kbd>W</kbd>, <kbd>Gamepad Right Trigger</kbd>, <kbd>Gamepad A/Cross</kbd>: Accelerate
 - <kbd>Down Arrow</kbd>, <kbd>S</kbd>, <kbd>Gamepad Left Trigger</kbd>, <kbd>Gamepad B/Circle</kbd>, <kbd>Gamepad X/Square</kbd>: Brake/reverse
@@ -22,11 +22,14 @@ Language: GDScript
 
 Renderer: Forward+
 
-Sound Credit: 
+## Sound Credit: 
 [`Sunrise`](https://freesound.org/people/nyoz/sounds/614202/)
 [`Day`](https://freesound.org/people/pawsound/sounds/154880/)
 [`Sunset`](https://freesound.org/people/roisin.gleeson/sounds/699131/)
 [`Night`](https://freesound.org/people/DidntGoToFilmSchool/sounds/248103/)
+
+## Model Credit:
+[tree low-poly](https://sketchfab.com/3d-models/tree-low-poly-4cd243eb74c74b3ea2190ebcec0439fb) by Ricardo Sanchez (https://sketchfab.com/380660711785)
 
 Check out this demo on the asset library: https://godotengine.org/asset-library/asset/2752
 
