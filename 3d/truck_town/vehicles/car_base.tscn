@@ -146,11 +146,13 @@ height = 1.25
 stream = ExtResource("5_m8g7o")
 pitch_scale = 0.05
 autoplay = true
+bus = &"Vehicle"
 
 [node name="ImpactSound" type="AudioStreamPlayer3D" parent="Body" unique_id=1217688170]
 stream = SubResource("AudioStreamRandomizer_bpr2q")
 volume_db = -10.0
 max_polyphony = 3
+bus = &"Vehicle"
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body" unique_id=938826726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
