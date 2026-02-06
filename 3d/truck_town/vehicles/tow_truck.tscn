@@ -181,14 +181,12 @@ shape = SubResource("BoxShape3D_0hbge")
 stream = ExtResource("5_fwfew")
 pitch_scale = 0.05
 autoplay = true
-attenuation_filter_cutoff_hz = 20500.0
 
 [node name="ImpactSound" type="AudioStreamPlayer3D" parent="Body" unique_id=633494895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391365, 0.158069)
 stream = SubResource("AudioStreamRandomizer_aad58")
 volume_db = -10.0
 max_polyphony = 3
-attenuation_filter_cutoff_hz = 20500.0
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body" unique_id=2144505691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
