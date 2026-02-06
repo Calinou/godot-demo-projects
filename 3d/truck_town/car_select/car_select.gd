@@ -27,6 +27,7 @@ func _load_scene(car_scene: PackedScene) -> void:
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
 	town = preload("res://town/town_scene.tscn").instantiate()
+	
 	if button_sunrise.button_pressed:
 		town.mood = town.Mood.SUNRISE
 	elif button_day.button_pressed:
@@ -35,9 +36,8 @@ func _load_scene(car_scene: PackedScene) -> void:
 		town.mood = town.Mood.SUNSET
 	elif button_night.button_pressed:
 		town.mood = town.Mood.NIGHT
-	town.get_node(^"InstancePos").add_child(car)
-	town.get_node(^"Spedometer").car_body = car.get_child(0)
-	town.get_node(^"Back").pressed.connect(_on_back_pressed)
+	
+	town.setup(car, _on_back_pressed)
 
 	get_parent().add_child(town)
 	hide()

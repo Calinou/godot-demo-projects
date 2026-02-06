@@ -193,23 +193,25 @@ distance_fade_length = 15.0
 omni_range = 15.0
 
 [node name="InstancePos" type="Marker3D" parent="." unique_id=89081834]
+unique_name_in_owner = true
 transform = Transform3D(3.57628e-07, 0, -1, 0, 1, 0, 1, 0, 3.57628e-07, 35.48, 8.72405, 14.335)
 
 [node name="TownModel" parent="." unique_id=1541596250 instance=ExtResource("1_amwer")]
 
-[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1449820176) index="0" unique_id=323121244]
+[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="0" unique_id=292697400]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1449820176) index="2" unique_id=1326126111]
+[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="2" unique_id=1348641579]
 surface_material_override/0 = ExtResource("3_8s61a")
 
-[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1449820176) index="4" unique_id=2141893651]
+[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="4" unique_id=1253252438]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 306520758) index="0" unique_id=975998942]
+[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 2090465591) index="0" unique_id=345497100]
 surface_material_override/0 = ExtResource("3_8s61a")
 
 [node name="Spedometer" type="Button" parent="." unique_id=294256170]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 40)
 anchors_preset = 3
 anchor_left = 1.0
@@ -231,6 +233,7 @@ text = "Speed: ???"
 script = ExtResource("2")
 
 [node name="Back" type="Button" parent="." unique_id=2142412231]
+unique_name_in_owner = true
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 92.0

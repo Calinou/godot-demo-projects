@@ -15,6 +15,12 @@ var mood := Mood.DAY: set = set_mood
 var compatibility_light: DirectionalLight3D
 
 
+func setup(car: Node3D, back_callback: Callable) -> void:
+	%InstancePos.add_child(car)
+	%Spedometer.car_body = car.get_child(0)
+	%Back.pressed.connect(back_callback)
+
+
 func _ready() -> void:
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
 		# Use PCF13 shadow filtering to improve quality (Medium maps to PCF5 instead).
