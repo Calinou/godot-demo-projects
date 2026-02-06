@@ -1,10 +1,17 @@
 extends Control
 
+@onready var car_container: HBoxContainer = %CarContainer
+
+@onready var button_sunrise: CheckBox = %Sunrise
+@onready var button_day: CheckBox = %Day
+@onready var button_sunset: CheckBox = %Sunset
+@onready var button_night: CheckBox = %Night
+
 var town: Node3D = null
 
 func _ready() -> void:
 	# Automatically focus the first item for gamepad accessibility.
-	$HBoxContainer/MiniVan.grab_focus.call_deferred()
+	focus_first_car()
 
 
 func _process(_delta: float) -> void:
@@ -12,17 +19,21 @@ func _process(_delta: float) -> void:
 		_on_back_pressed()
 
 
+func focus_first_car() -> void:
+	car_container.get_child(0).grab_focus.call_deferred()
+
+
 func _load_scene(car_scene: PackedScene) -> void:
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
 	town = preload("res://town/town_scene.tscn").instantiate()
-	if $PanelContainer/MarginContainer/HBoxContainer/Sunrise.button_pressed:
+	if button_sunrise.button_pressed:
 		town.mood = town.Mood.SUNRISE
-	elif $PanelContainer/MarginContainer/HBoxContainer/Day.button_pressed:
+	elif button_day.button_pressed:
 		town.mood = town.Mood.DAY
-	elif $PanelContainer/MarginContainer/HBoxContainer/Sunset.button_pressed:
+	elif button_sunset.button_pressed:
 		town.mood = town.Mood.SUNSET
-	elif $PanelContainer/MarginContainer/HBoxContainer/Night.button_pressed:
+	elif button_night.button_pressed:
 		town.mood = town.Mood.NIGHT
 	town.get_node(^"InstancePos").add_child(car)
 	town.get_node(^"Spedometer").car_body = car.get_child(0)
@@ -38,7 +49,7 @@ func _on_back_pressed() -> void:
 		town.queue_free()
 		show()
 		# Automatically focus the first item for gamepad accessibility.
-		$HBoxContainer/MiniVan.grab_focus.call_deferred()
+		focus_first_car()
 	else:
 		# In main menu, exit the game.
 		get_tree().quit()

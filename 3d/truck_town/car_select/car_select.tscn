@@ -30,7 +30,8 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=741482576]
+[node name="CarContainer" type="HBoxContainer" parent="." unique_id=741482576]
+unique_name_in_owner = true
 layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -39,19 +40,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MiniVan" type="Button" parent="HBoxContainer" unique_id=1052280894]
+[node name="MiniVan" type="Button" parent="CarContainer" unique_id=1052280894]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 icon = ExtResource("2")
 
-[node name="TrailerTruck" type="Button" parent="HBoxContainer" unique_id=1750997618]
+[node name="TrailerTruck" type="Button" parent="CarContainer" unique_id=1750997618]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 icon = ExtResource("3")
 
-[node name="TowTruck" type="Button" parent="HBoxContainer" unique_id=1979324274]
+[node name="TowTruck" type="Button" parent="CarContainer" unique_id=1979324274]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -107,12 +108,14 @@ layout_mode = 2
 text = "Mood"
 
 [node name="Sunrise" type="CheckBox" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=893251957]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 button_group = SubResource("ButtonGroup_lcrm3")
 text = "Sunrise"
 
 [node name="Day" type="CheckBox" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1121484157]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
@@ -120,17 +123,19 @@ button_group = SubResource("ButtonGroup_lcrm3")
 text = "Day"
 
 [node name="Sunset" type="CheckBox" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1115499041]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 button_group = SubResource("ButtonGroup_lcrm3")
 text = "Sunset"
 
 [node name="Night" type="CheckBox" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=467681337]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 button_group = SubResource("ButtonGroup_lcrm3")
 text = "Night"
 
-[connection signal="pressed" from="HBoxContainer/MiniVan" to="." method="_on_mini_van_pressed"]
-[connection signal="pressed" from="HBoxContainer/TrailerTruck" to="." method="_on_trailer_truck_pressed"]
-[connection signal="pressed" from="HBoxContainer/TowTruck" to="." method="_on_tow_truck_pressed"]
+[connection signal="pressed" from="CarContainer/MiniVan" to="." method="_on_mini_van_pressed"]
+[connection signal="pressed" from="CarContainer/TrailerTruck" to="." method="_on_trailer_truck_pressed"]
+[connection signal="pressed" from="CarContainer/TowTruck" to="." method="_on_tow_truck_pressed"]
