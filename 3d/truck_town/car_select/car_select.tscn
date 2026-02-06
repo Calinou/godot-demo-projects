@@ -27,6 +27,21 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8injy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_8injy"]
+font_size = 22
+
 [node name="CarSelect" type="Control" unique_id=278128104]
 layout_mode = 3
 anchors_preset = 8
@@ -208,6 +223,27 @@ size_flags_vertical = 4
 theme_override_styles/slider = SubResource("StyleBoxFlat_y5qrv")
 max_value = 1.0
 step = 0.01
+
+[node name="LoadingPanel" type="PanelContainer" parent="." unique_id=379577787]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8injy")
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadingPanel" unique_id=561441320]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LoadingPanel/CenterContainer" unique_id=1051026624]
+layout_mode = 2
+text = "loading...
+(this might take a while)"
+label_settings = SubResource("LabelSettings_8injy")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CarContainer/MiniVan" to="." method="_on_mini_van_pressed"]
 [connection signal="pressed" from="CarContainer/TrailerTruck" to="." method="_on_trailer_truck_pressed"]

@@ -13,6 +13,8 @@ var audio_master: int = AudioServer.get_bus_index("Master")
 @onready var button_mute: TextureButton = %Mute
 @onready var slider_volume: HSlider = %Volume
 
+@onready var loading_screen: PanelContainer = %LoadingPanel
+
 var town: Node3D = null
 
 func _ready() -> void:
@@ -33,6 +35,10 @@ func focus_first_car() -> void:
 
 
 func _load_scene(car_scene: PackedScene) -> void:
+	# Show loading screen and wait one frame to ensure that it was rendered
+	loading_screen.visible = true
+	await get_tree().process_frame
+	
 	var car: Node3D = car_scene.instantiate()
 	car.name = "car"
 	town = preload("res://town/town_scene.tscn").instantiate()
@@ -56,6 +62,7 @@ func _on_back_pressed() -> void:
 	if is_instance_valid(town):
 		# Currently in the town, go back to main menu.
 		town.queue_free()
+		loading_screen.visible = false
 		show()
 		# Automatically focus the first item for gamepad accessibility.
 		focus_first_car()
