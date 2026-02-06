@@ -306,35 +306,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8510952, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.774849, 0)
 shape = SubResource("CapsuleShape3D_pxdqy")
 
-[node name="Spedometer" type="Button" parent="." unique_id=294256170]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 40)
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=883662698]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -164.0
-offset_top = -64.0
+offset_left = -428.0
+offset_top = -92.0
 offset_right = -24.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
-focus_mode = 0
-action_mode = 0
-shortcut = SubResource("Shortcut_msvqx")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-text = "Speed: ???"
-script = ExtResource("2")
-tint_gradient = SubResource("Gradient_nng2a")
 
-[node name="Turbometer" type="TextureProgressBar" parent="." unique_id=1826510602]
+[node name="Turbometer" type="TextureProgressBar" parent="HBoxContainer" unique_id=1826510602]
 unique_name_in_owner = true
-offset_left = 715.0
-offset_top = 548.0
-offset_right = 975.0
-offset_bottom = 616.0
+layout_mode = 2
 max_value = 10.0
 step = 0.0
 value = 10.0
@@ -342,7 +329,7 @@ texture_under = ExtResource("8_tyv8r")
 texture_progress = ExtResource("8_clgdk")
 texture_progress_offset = Vector2(2, 2)
 
-[node name="Label" type="Label" parent="Turbometer" unique_id=2108878540]
+[node name="Label" type="Label" parent="HBoxContainer/Turbometer" unique_id=2108878540]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -363,10 +350,24 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 30
 text = "TURBO"
 
-[node name="TurboAnimator" type="AnimationPlayer" parent="Turbometer" unique_id=1708193836]
+[node name="TurboAnimator" type="AnimationPlayer" parent="HBoxContainer/Turbometer" unique_id=1708193836]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_w44mb")
 autoplay = &"Idle"
+
+[node name="Spedometer" type="Button" parent="HBoxContainer" unique_id=294256170]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+action_mode = 0
+shortcut = SubResource("Shortcut_msvqx")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Speed: ???"
+script = ExtResource("2")
+tint_gradient = SubResource("Gradient_nng2a")
 
 [node name="Back" type="Button" parent="." unique_id=2142412231]
 unique_name_in_owner = true
@@ -433,6 +434,6 @@ passby_press = true
 action = "turn_right"
 visibility_mode = 1
 
-[connection signal="pressed" from="Spedometer" to="Spedometer" method="_on_spedometer_pressed"]
+[connection signal="pressed" from="HBoxContainer/Spedometer" to="HBoxContainer/Spedometer" method="_on_spedometer_pressed"]
 
 [editable path="TownModel"]
