@@ -1,5 +1,7 @@
 extends Control
 
+var audio_master: int = AudioServer.get_bus_index("Master")
+
 @onready var car_container: HBoxContainer = %CarContainer
 
 @onready var button_sunrise: CheckBox = %Sunrise
@@ -7,11 +9,18 @@ extends Control
 @onready var button_sunset: CheckBox = %Sunset
 @onready var button_night: CheckBox = %Night
 
+@onready var button_sdfgi: CheckBox = $%SDFGI
+@onready var button_mute: TextureButton = %Mute
+@onready var slider_volume: HSlider = %Volume
+
 var town: Node3D = null
 
 func _ready() -> void:
 	# Automatically focus the first item for gamepad accessibility.
 	focus_first_car()
+	
+	# Hide SDFGI button if this is using a renderer that doesn't support it
+	button_sdfgi.visible = RenderingServer.get_current_rendering_method() == "forward_plus" 
 
 
 func _process(_delta: float) -> void:
@@ -37,7 +46,7 @@ func _load_scene(car_scene: PackedScene) -> void:
 	elif button_night.button_pressed:
 		town.mood = town.Mood.NIGHT
 	
-	town.setup(car, _on_back_pressed)
+	town.setup(car, _on_back_pressed, button_sdfgi.button_pressed)
 
 	get_parent().add_child(town)
 	hide()
@@ -65,3 +74,11 @@ func _on_trailer_truck_pressed() -> void:
 
 func _on_tow_truck_pressed() -> void:
 	_load_scene(preload("res://vehicles/tow_truck.tscn"))
+
+
+func _on_mute_toggled(muted: bool) -> void:
+	AudioServer.set_bus_mute(audio_master, muted)
+
+
+func _on_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(audio_master, value)

@@ -53,6 +53,7 @@ height = 128
 script = ExtResource("1_gxe8p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=710399183]
+unique_name_in_owner = true
 environment = SubResource("Environment_dauhq")
 
 [node name="AmbientSound" type="AudioStreamPlayer" parent="." unique_id=1768893818]
@@ -207,16 +208,16 @@ transform = Transform3D(3.57628e-07, 0, -1, 0, 1, 0, 1, 0, 3.57628e-07, 35.48, 8
 
 [node name="TownModel" parent="." unique_id=1541596250 instance=ExtResource("1_amwer")]
 
-[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="0" unique_id=292697400]
+[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 2066656793) index="0" unique_id=2059714063]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="2" unique_id=1348641579]
+[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 2066656793) index="2" unique_id=257907731]
 surface_material_override/0 = ExtResource("3_8s61a")
 
-[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="4" unique_id=1253252438]
+[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 2066656793) index="4" unique_id=1024381330]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 2090465591) index="0" unique_id=345497100]
+[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 2071543635) index="0" unique_id=434467524]
 surface_material_override/0 = ExtResource("3_8s61a")
 
 [node name="Spedometer" type="Button" parent="." unique_id=294256170]

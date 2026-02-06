@@ -15,10 +15,11 @@ var mood := Mood.DAY: set = set_mood
 var compatibility_light: DirectionalLight3D
 
 
-func setup(car: Node3D, back_callback: Callable) -> void:
+func setup(car: Node3D, back_callback: Callable, sdfgi: bool) -> void:
 	%InstancePos.add_child(car)
 	%Spedometer.car_body = car.get_child(0)
 	%Back.pressed.connect(back_callback)
+	%WorldEnvironment.environment.sdfgi_enabled = sdfgi
 
 
 func _ready() -> void:
