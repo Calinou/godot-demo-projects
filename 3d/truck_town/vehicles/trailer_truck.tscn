@@ -246,20 +246,23 @@ min_distance = 5.0
 max_distance = 7.0
 height = 2.5
 
-[node name="HonkSound" type="AudioStreamPlayer3D" parent="Body" unique_id=819906724]
-stream = ExtResource("5_qe823")
-
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="Body" unique_id=147702566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169557, -0.222867, 0.0955184)
 stream = ExtResource("6_r21ue")
 pitch_scale = 0.05
 autoplay = true
+bus = &"Vehicle"
 
 [node name="ImpactSound" type="AudioStreamPlayer3D" parent="Body" unique_id=673547706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169557, -0.222867, 0.0955184)
 stream = SubResource("AudioStreamRandomizer_xu0em")
 volume_db = -10.0
 max_polyphony = 3
+bus = &"Vehicle"
+
+[node name="HonkSound" type="AudioStreamPlayer3D" parent="Body" unique_id=819906724]
+stream = ExtResource("5_qe823")
+bus = &"Vehicle"
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body" unique_id=2065300928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
@@ -288,6 +291,7 @@ cull_mask = 1048573
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0.47184074, 0.13115557, 1.3826402)
 light_color = Color(1, 0.9411765, 0.8627451, 1)
 light_energy = 0.0
+shadow_enabled = true
 spot_range = 30.0
 spot_angle = 60.0
 spot_angle_attenuation = 2.0
@@ -296,6 +300,7 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -0.47449952, 0.13860829, 1.3812557)
 light_color = Color(1, 0.9411765, 0.8627451, 1)
 light_energy = 0.0
+shadow_enabled = true
 spot_range = 30.0
 spot_angle = 60.0
 spot_angle_attenuation = 2.0

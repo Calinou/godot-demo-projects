@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpgfy033dc715" path="res://town/model/town_model.gltf" id="1_amwer"]
 [ext_resource type="Script" uid="uid://di7cre4unhk3f" path="res://town/town_scene.gd" id="1_gxe8p"]
-[ext_resource type="Script" uid="uid://i2wsujhhpwj2" path="res://spedometer.gd" id="2"]
+[ext_resource type="Script" uid="uid://i2wsujhhpwj2" path="res://speedometer.gd" id="2"]
 [ext_resource type="Material" uid="uid://boboc4pk5t03s" path="res://town/sky_day.tres" id="2_1df3w"]
 [ext_resource type="Material" uid="uid://dwj22a5ckgpms" path="res://town/materials/grass.tres" id="2_ubld8"]
 [ext_resource type="Material" uid="uid://bhrhj1ylqw2tp" path="res://town/materials/cement.tres" id="3_8s61a"]
@@ -21,7 +21,7 @@ ambient_light_sky_contribution = 0.5
 tonemap_mode = 4
 glow_intensity = 0.5
 fog_enabled = true
-fog_light_color = Color(0.62, 0.6014, 0.6014, 1)
+fog_light_color = Color(0.7254902, 0.91764706, 1, 1)
 fog_density = 0.0015
 fog_sky_affect = 0.0
 
@@ -249,16 +249,16 @@ transform = Transform3D(3.57628e-07, 0, -1, 0, 1, 0, 1, 0, 3.57628e-07, 35.48, 8
 
 [node name="TownModel" parent="." unique_id=1541596250 instance=ExtResource("1_amwer")]
 
-[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="0" unique_id=292697400]
+[node name="GrassMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1537880450) index="0" unique_id=1999125698]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="2" unique_id=1348641579]
+[node name="RoadMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1537880450) index="2" unique_id=952483985]
 surface_material_override/0 = ExtResource("3_8s61a")
 
-[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 787842387) index="4" unique_id=1253252438]
+[node name="OuterGroundMesh" parent="TownModel/Terrain" parent_id_path=PackedInt32Array(1541596250, 1537880450) index="4" unique_id=580083069]
 surface_material_override/0 = ExtResource("2_ubld8")
 
-[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 2090465591) index="0" unique_id=345497100]
+[node name="RacetrackMesh" parent="TownModel/Racetrack/RacetrackMain" parent_id_path=PackedInt32Array(1541596250, 1117447578) index="0" unique_id=434904741]
 surface_material_override/0 = ExtResource("3_8s61a")
 
 [node name="Trees" type="Node3D" parent="TownModel" unique_id=637052945]
@@ -341,6 +341,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1745945643]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5019608)
 text = "F1 - Toggle controls"
 
 [node name="Controls" type="VBoxContainer" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=886070146]
@@ -351,7 +352,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Arrows - Drive
 Enter - Honk
-Space - Turbo
+Shift - Turbo
 L - Headlights"
 
 [node name="HSeparator" type="HSeparator" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=1593160399]
@@ -360,8 +361,8 @@ theme_override_styles/separator = SubResource("StyleBoxLine_w44mb")
 
 [node name="Label2" type="Label" parent="GameUI/PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=1268511783]
 layout_mode = 2
-text = "C - Cycle camera
-U - Cycle speed units
+text = "U - Cycle speed units
+C - Cycle camera
 M - Cycle mood"
 
 [node name="CarUI" type="HBoxContainer" parent="." unique_id=883662698]
@@ -413,7 +414,7 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_w44mb")
 autoplay = &"Idle"
 
-[node name="Spedometer" type="Button" parent="CarUI" unique_id=294256170]
+[node name="Speedometer" type="Button" parent="CarUI" unique_id=294256170]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
@@ -484,6 +485,6 @@ passby_press = true
 action = "turn_right"
 visibility_mode = 1
 
-[connection signal="pressed" from="CarUI/Spedometer" to="CarUI/Spedometer" method="_on_spedometer_pressed"]
+[connection signal="pressed" from="CarUI/Speedometer" to="CarUI/Speedometer" method="_on_speedometer_pressed"]
 
 [editable path="TownModel"]

@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cphq5chn2a1lh"
-path.s3tc="res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.s3tc.ctex"
-path.etc2="res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.etc2.ctex"
+path="res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://town/tree/textures/tree_material_baseColor.jpeg"
-dest_files=["res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.s3tc.ctex", "res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.etc2.ctex"]
+dest_files=["res://.godot/imported/tree_material_baseColor.jpeg-2c5b9a8387ab3210af5ac8b0586ee25f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

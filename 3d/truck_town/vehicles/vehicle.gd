@@ -13,6 +13,7 @@ var previous_speed := linear_velocity.length()
 var turbo_active := false
 var headlights_active := false
 var _steer_target := 0.0
+var is_compatibility := RenderingServer.get_current_rendering_method() == "gl_compatibility"
 
 @onready var desired_engine_pitch: float = $EngineSound.pitch_scale
 
@@ -95,19 +96,23 @@ func _input(event: InputEvent) -> void:
 
 
 func toggle_headlights() -> void:
-	for node in get_tree().get_nodes_in_group(&"headlight"):
-		# If we were halfway through the "off" transition upon toggling, consider headlights as
-		# being inactive up to this point. (Therefore, switch them on.)
-		headlights_active = node.light_energy < 1.0
+	for node: Light3D in get_tree().get_nodes_in_group(&"headlight"):
+		# Consider headlights as being inactive up to this point if their energy was previously 0.
+		headlights_active = is_zero_approx(node.light_energy)
 		var t := get_tree().create_tween()
 
 		if headlights_active:
 			node.visible = true
 
+		var target_energy := 2.0 if headlights_active else 0.0
+		if is_compatibility:
+			# Decrease light brightness to compensate for sRGB blending in Compatibility
+			# (since headlights cast shadows).
+			target_energy *= 0.5
 		t.tween_property(
 				node,
 				^"light_energy",
-				2.0 if headlights_active else 0.0,
+				target_energy,
 				0.2
 			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 

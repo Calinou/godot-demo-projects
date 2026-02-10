@@ -11,8 +11,8 @@ enum Mood {
 
 var mood := Mood.DAY: set = set_mood
 
-var turn_on_lights : bool = false
-var ambient_sound : Array = [
+var turn_on_lights: bool = false
+var ambient_sound: Array = [
 	preload("res://town/sound/mood_sunrise.wav"),
 	preload("res://town/sound/mood_day.wav"),
 	preload("res://town/sound/mood_sunset.wav"),
@@ -30,7 +30,7 @@ func setup(car: Node3D, back_callback: Callable, sdfgi: bool) -> void:
 
 	car_body.turbometer = %Turbometer
 	car_body.turbo_animator = %TurboAnimator
-	%Spedometer.car_body = car_body
+	%Speedometer.car_body = car_body
 	%InstancePos.add_child(car)
 
 	%Back.pressed.connect(back_callback)
@@ -55,15 +55,20 @@ func _ready() -> void:
 		compatibility_light.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_ONLY
 		add_child(compatibility_light)
 
+		for headlight: Light3D in get_tree().get_nodes_in_group(&"headlight"):
+			# Enable Reverse Cull Face to fix shadow biasing in Compatibility.
+			headlight.shadow_reverse_cull_face = true
+
 
 func _input(input_event: InputEvent) -> void:
 	if input_event.is_action_pressed(&"cycle_mood"):
 		mood = wrapi(mood + 1, 0, Mood.size()) as Mood
 		$AmbientSound.play()
-		for l in $Lamps.get_children():
+		for l: Node3D in $Lamps.get_children():
 			l.Light.visible = turn_on_lights
 	elif input_event.is_action_pressed(&"toggle_controls"):
 		controls_sheet.visible = not controls_sheet.visible
+
 
 func set_mood(p_mood: Mood) -> void:
 	mood = p_mood
@@ -81,7 +86,7 @@ func set_mood(p_mood: Mood) -> void:
 			$DirectionalLight3D.light_color = Color.WHITE
 			$DirectionalLight3D.light_energy = 1.45
 			$WorldEnvironment.environment.sky.sky_material = preload("res://town/sky_day.tres")
-			$WorldEnvironment.environment.fog_light_color = Color(0.62, 0.601, 0.601)
+			$WorldEnvironment.environment.fog_light_color = Color(0.725, 0.918, 1.0)
 		Mood.SUNSET:
 			$DirectionalLight3D.rotation_degrees = Vector3(-19, -31, 62)
 			$DirectionalLight3D.light_color = Color(0.488, 0.3, 0.1)
@@ -106,13 +111,12 @@ func set_mood(p_mood: Mood) -> void:
 		compatibility_light.light_energy = $DirectionalLight3D.light_energy * 0.2
 
 	if is_inside_tree():
-		var auto_headlights := mood == Mood.SUNSET or mood == Mood.NIGHT
 		var car := get_tree().get_nodes_in_group(&"car")[0]
 		if (
 				# Switch headlights on for nighttime.
-				auto_headlights and not car.headlights_active
+				turn_on_lights and not car.headlights_active
 		) or (
 				# Switch headlights off for daytime.
-				not auto_headlights and car.headlights_active
+				not turn_on_lights and car.headlights_active
 		):
 			get_tree().call_group(&"car", &"toggle_headlights")

@@ -215,7 +215,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="LoadingPanel/CenterContainer" unique_id=1051026624]
 layout_mode = 2
-text = "loading...
+text = "Loading...
 (this might take a while)"
 label_settings = SubResource("LabelSettings_8injy")
 horizontal_alignment = 1

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/mood_sunrise.wav-7018017f18c242d2789ac4f4f5ff
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

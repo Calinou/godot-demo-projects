@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/mood_night.wav-4f14e66aafdc11e684dacf1399f3a3
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

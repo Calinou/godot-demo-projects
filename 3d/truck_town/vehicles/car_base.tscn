@@ -157,6 +157,7 @@ bus = &"Vehicle"
 
 [node name="HonkSound" type="AudioStreamPlayer3D" parent="Body" unique_id=609361233]
 stream = ExtResource("10_yg6w8")
+bus = &"Vehicle"
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body" unique_id=938826726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
@@ -185,6 +186,8 @@ cull_mask = 1048573
 transform = Transform3D(1, 0, 0, 0, -0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, 0.4684496, 0.14529891, 1.390707)
 light_color = Color(1, 0.9411765, 0.8627451, 1)
 light_energy = 0.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
 spot_range = 30.0
 spot_angle = 60.0
 spot_angle_attenuation = 2.0
@@ -193,6 +196,8 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, -0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, -0.47789067, 0.15275164, 1.3893225)
 light_color = Color(1, 0.9411765, 0.8627451, 1)
 light_energy = 0.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
 spot_range = 30.0
 spot_angle = 60.0
 spot_angle_attenuation = 2.0

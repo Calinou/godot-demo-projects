@@ -26,5 +26,5 @@ func _process(_delta: float) -> void:
 	add_theme_color_override(&"font_color", tint_gradient.sample(remap(car_body.linear_velocity.length(), 0.0, 30.0, 0.0, 1.0)))
 
 
-func _on_spedometer_pressed() -> void:
+func _on_speedometer_pressed() -> void:
 	speed_unit = ((speed_unit + 1) % SpeedUnit.size()) as SpeedUnit
