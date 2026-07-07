@@ -78,7 +78,6 @@
 		}
 
 		li a {
-			display: inline-block;
 			width: 100%;
 			height: 4rem;
 			margin-left: 0.5rem;
@@ -97,6 +96,10 @@
 			margin: 20px 10px;
 		}
 
+		.demos li a {
+			display: inline-block;
+		}
+
 		.unsupported-demos li {
 			margin-bottom: 1.5rem;
 		}
@@ -113,8 +116,6 @@
 	</p>
 	<p>
 		The web exports on this page are provided for demonstration purposes only.
-		Some of these demos may not function or render correctly on the web platform,
-		especially on mobile devices.
 		For best performance, it's recommended to
 		<a href="https://godotengine.org/download/">download</a> a native editor
 		and run the demo project by importing its files in the project manager.
@@ -126,5 +127,5 @@
 	</p>
 
 	<h2>List of demos</h2>
-	<ul>
+	<ul class="demos">
 		<!-- The list of demos will be inserted below by the CI process. -->
